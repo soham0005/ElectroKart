@@ -1,0 +1,7 @@
+.ProductReviews{
+    display: flex;
+    width: 90vw;
+    margin: auto;
+    align-items: flex-start;
+    justify-content: center;
+}   
