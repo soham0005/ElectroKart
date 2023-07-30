@@ -1,5 +1,4 @@
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
 import PreNavbar from './components/PreNavbar';
 import {BrowserRouter as Router,Routes,Route } from "react-router-dom";
 import Slider from './components/Slider';
