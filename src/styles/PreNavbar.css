@@ -1,26 +1,30 @@
-*{
+* {
     scroll-behavior: smooth;
 }
-.preNav{
+
+.preNav {
     background-color: rgb(57, 55, 55);
     color: whitesmoke;
     display: grid;
     grid-template-columns: 5fr 2fr;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.preNav > div{
+.preNav > div {
     padding: 0 4vmax;
     display: flex;
     align-items: center;
 }
 
-.preNav > div > span{
+.preNav > div > span {
     color: rgb(180,180,180);
     font-size: 0.8vmax;
     font-weight: 100;
 }
 
-.preNav > div > a{
+.preNav > div > a {
     color: rgb(180,180,180);
     font-size: 0.9vmax;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -28,11 +32,12 @@
     margin: 1vmax;
     text-decoration: none;
 }
-.preNav > div > a:hover{
+
+.preNav > div > a:hover {
     color: white;
 }
 
-#cartSvg{
+#cartSvg {
     fill: rgb(180, 180, 180);
     height: 20px;
     align-items: center;
