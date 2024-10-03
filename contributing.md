@@ -66,6 +66,9 @@ git commit -m "feat: added new feature"
 4. Your work must be original and adhere to the project's coding standards.
 5. Comment your code where necessary for clarity.
 6. Always ensure all tests pass before pushing your changes.
+```bash
+npm run test
+```
 
 ## Communication and Support 💬
 1. Join the project's communication channels to interact with other contributors and seek assistance.
