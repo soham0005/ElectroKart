@@ -65,7 +65,7 @@ git commit -m "feat: added new feature"
 3. Never commit to the main branch.
 4. Your work must be original and adhere to the project's coding standards.
 5. Comment your code where necessary for clarity.
-6. Always ensure all tests pass before pushing your changes.
+6. Always ensure all tests pass before pushing your changes by running:
 ```bash
 npm run test
 ```
