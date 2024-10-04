@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { CiSearch, CiShoppingCart, CiUser } from "react-icons/ci";
+import {  CiShoppingCart, CiUser } from "react-icons/ci";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
+import CollapsibleSearchBar from './CollapsibleSearchBar';
 import '@fontsource/montserrat';
 
 const Navbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const [isSearchOpen, setSearchOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
-  const toggleSearch = () => {
-    setSearchOpen(!isSearchOpen);
-  };
+
 
   return (
     <>
       <Nav>
         <NavLeft>
-          <Logo src="./logo.png" alt="Logo" />
+          <Logo src="./logo.jpg" alt="Logo" />
           <NavItem href="#">Store</NavItem>
           <NavItem href="#">Phones</NavItem>
           <NavItem href="#">Tablets</NavItem>
@@ -31,7 +29,7 @@ const Navbar = () => {
         <NavRight>
           <NavItem href="#">Discover</NavItem>
           <NavItem href="#">Support</NavItem>
-          <NavIcon onClick={toggleSearch}><CiSearch /></NavIcon>
+          <CollapsibleSearchBar></CollapsibleSearchBar>
           <NavIcon><CiShoppingCart /></NavIcon>
           <NavIcon><CiUser /></NavIcon>
           <MobileMenuIcon onClick={toggleSidebar}>
@@ -39,13 +37,6 @@ const Navbar = () => {
           </MobileMenuIcon>
         </NavRight>
       </Nav>
-
-      {isSearchOpen && (
-        <SearchBar isOpen={isSearchOpen}>
-          <SearchCloseIcon onClick={toggleSearch}><AiOutlineClose /></SearchCloseIcon>
-          <SearchInput type="text" placeholder="Search..." />
-        </SearchBar>
-      )}
 
       {isSidebarOpen && <Overlay onClick={toggleSidebar} />}
 
@@ -56,7 +47,7 @@ const Navbar = () => {
           </CloseIcon>
         </SidebarHeader>
         <SidebarContent>
-          <CenteredLogo src="./logo.png" alt="Logo" />
+          <CenteredLogo src="./logo.jpg" alt="Logo" />
           <SidebarItem href="#">Store</SidebarItem>
           <SidebarItem href="#">Phones</SidebarItem>
           <SidebarItem href="#">Tablets</SidebarItem>
@@ -268,7 +259,7 @@ const SidebarSpacing = styled.div`
 const CenteredLogo = styled.img`
   width: 100px;
   height: auto;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 50px auto;
 `;
 
 const Logo = styled.img`
@@ -280,34 +271,3 @@ const Logo = styled.img`
   }
 `;
 
-const SearchBar = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: ${({ isOpen }) => (isOpen ? '300px' : '0')}; /* Change width based on isOpen */
-  padding: 10px 20px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  z-index: 200;
-  overflow: hidden; /* Hide overflow when closed */
-  transition: width 0.3s ease-in-out; /* Add transition */
-  transform: translateX(${({ isOpen }) => (isOpen ? '0' : '-100%')}); /* Shift left when closed */
-`;
-
-const SearchInput = styled.input`
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  transition: width 0.3s ease-in-out;
-`;
-
-const SearchCloseIcon = styled.div`
-  font-size: 24px;
-  margin-right: 10px; /* Adjust margin to space the close icon */
-  cursor: pointer;
-`;
