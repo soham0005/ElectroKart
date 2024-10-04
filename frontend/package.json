@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "dependencies": {
     "@fontsource/montserrat": "^5.1.0",
     "@testing-library/jest-dom": "^5.17.0",
@@ -28,6 +29,8 @@
     "web-vitals": "^2.1.4"
   },
 =======
+=======
+>>>>>>> 36433d44980ff3b6d39a452f2146986749ca74fb
 "dependencies": {
   "@fontsource/montserrat": "^5.1.0",
   "@testing-library/jest-dom": "^5.17.0",
@@ -47,7 +50,10 @@
   "web-vitals": "^2.1.4"
 },
 
+<<<<<<< HEAD
 >>>>>>> 36433d4 ("package.json changes")
+=======
+>>>>>>> 36433d44980ff3b6d39a452f2146986749ca74fb
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
