@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './logins.css';
+
+import '../styles/logins.css';
 
 const UserLogin = () => {
-  const [isRegistering, setIsRegistering] = useState(true); // Track whether to show login or register form
+  const [isRegistering, setIsRegistering] = useState(true); 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,7 +36,7 @@ const UserLogin = () => {
           alert("Invalid email or password! Please try again.");
         } else {
           alert("Logged in successfully!");
-          navigate('/dashboard');
+          navigate('/product');
         }
       })
       .catch(err => console.log(err));

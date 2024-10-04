@@ -13,6 +13,7 @@ import Videos from './components/Videos.jsx';
 import Banner from './components/Banner.jsx';
 import Footer from './components/Footer.jsx';
 import UserLogin from './components/Userlogin.jsx';
+import Product from './components/Product.jsx';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       {/* Define the routes first */}
       <Routes>
         <Route path="/user-login" element={<UserLogin />} />
+        <Route path="/product" element={<Product />} />
         <Route path="/music" element={<Accessories music={data.hotAccessories.music} musicCover={data.hotAccessoriesCover.music} />} />
         <Route path="/smartDevices" element={<Accessories smartDevice={data.hotAccessories.smartDevice} smartDeviceCover={data.hotAccessoriesCover.smartDevice} />} />
         <Route path="/home" element={<Accessories home={data.hotAccessories.home} homeCover={data.hotAccessoriesCover.home} />} />
