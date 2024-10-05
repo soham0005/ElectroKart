@@ -48,13 +48,13 @@ const PreNavbar = () => {
         <SidebarContent>
           <CenteredLogo src="/logo.png" alt="Logo" />
           <StyledSidebarLink to="/">Store</StyledSidebarLink>
-          <SidebarItem href="#">Phones</SidebarItem>
-          <SidebarItem href="#">Tablets</SidebarItem>
-          <SidebarItem href="#">TV & Smart Home</SidebarItem>
-          <SidebarItem href="#">Smart Watch & Audio</SidebarItem>
+          <StyledSidebarLink to="/">Phones</StyledSidebarLink>
+          <StyledSidebarLink to="/">Tablets</StyledSidebarLink>
+          <StyledSidebarLink to="/">TV & Smart Home</StyledSidebarLink>
+          <StyledSidebarLink to="/">Smart Watch & Audio</StyledSidebarLink>
           <SidebarSpacing />
           <StyledSidebarLink to="/register">Register</StyledSidebarLink>
-          <SidebarItem href="#">Support</SidebarItem>
+          <StyledSidebarLink to="/">Support</StyledSidebarLink>
         </SidebarContent>
       </Sidebar>
     </>
@@ -233,47 +233,6 @@ const SidebarContent = styled.div`
   flex-direction: column;
   padding: 20px;
 `;
-
-const SidebarItem = styled.a`
-  text-decoration: none;
-  color: black;
-  font-size: 18px;
-  padding: 10px 0;
-  cursor: pointer;
-  position: relative;
-  transition: color 0.3s ease-in-out;
-
-  &:hover {
-    color: black;
-    text-decoration: none;
-  }
-
-  &:hover::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: black;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0%;
-    height: 1px;
-    background-color: black;
-    transition: width 0.3s ease-in-out;
-  }
-
-  &:hover::after {
-    width: 100%;
-  }
-`;
-
 const SidebarSpacing = styled.div`
   margin-top: 30px;
 `;
