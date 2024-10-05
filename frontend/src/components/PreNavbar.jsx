@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {  CiShoppingCart, CiUser } from "react-icons/ci";
+import { CiShoppingCart, CiUser } from "react-icons/ci";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import CollapsibleSearchBar from './CollapsibleSearchBar';
 import '@fontsource/montserrat';
-import logo from '../assets/logo.webp';
+import { Link } from 'react-router-dom';
 
 const PreNavbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -14,23 +14,21 @@ const PreNavbar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
-
-
   return (
     <>
       <Nav>
         <NavLeft>
-          <Logo src={logo} alt="Logo" />
-          <NavItem href="#">Store</NavItem>
-          <NavItem href="#">Phones</NavItem>
-          <NavItem href="#">Tablets</NavItem>
-          <NavItem href="#">TV & Smart Home</NavItem>
-          <NavItem href="#">Smart Watch & Audio</NavItem>
+          <Logo src="/logo.png" alt="Logo" />
+          <StyledNavItem to="/">Store</StyledNavItem>
+          <StyledNavItem to="#">Phones</StyledNavItem>
+          <StyledNavItem to="#">Tablets</StyledNavItem>
+          <StyledNavItem to="#">TV & Smart Home</StyledNavItem>
+          <StyledNavItem to="#">Smart Watch & Audio</StyledNavItem>
         </NavLeft>
         <NavRight>
-          <NavItem href="#">Discover</NavItem>
+           <AnimatedButton to="/register">Register</AnimatedButton>
           <NavItem href="#">Support</NavItem>
-          <CollapsibleSearchBar></CollapsibleSearchBar>
+          <CollapsibleSearchBar />
           <NavIcon><CiShoppingCart /></NavIcon>
           <NavIcon><CiUser /></NavIcon>
           <MobileMenuIcon onClick={toggleSidebar}>
@@ -48,15 +46,15 @@ const PreNavbar = () => {
           </CloseIcon>
         </SidebarHeader>
         <SidebarContent>
-          <CenteredLogo src={logo} alt="Logo" />
-          <SidebarItem href="#">Store</SidebarItem>
-          <SidebarItem href="#">Phones</SidebarItem>
-          <SidebarItem href="#">Tablets</SidebarItem>
-          <SidebarItem href="#">TV & Smart Home</SidebarItem>
-          <SidebarItem href="#">Smart Watch & Audio</SidebarItem>
+          <CenteredLogo src="/logo.png" alt="Logo" />
+          <StyledSidebarLink to="/">Store</StyledSidebarLink>
+          <StyledSidebarLink to="/">Phones</StyledSidebarLink>
+          <StyledSidebarLink to="/">Tablets</StyledSidebarLink>
+          <StyledSidebarLink to="/">TV & Smart Home</StyledSidebarLink>
+          <StyledSidebarLink to="/">Smart Watch & Audio</StyledSidebarLink>
           <SidebarSpacing />
-          <SidebarItem href="#">Discover</SidebarItem>
-          <SidebarItem href="#">Support</SidebarItem>
+          <StyledSidebarLink to="/register">Register</StyledSidebarLink>
+          <StyledSidebarLink to="/">Support</StyledSidebarLink>
         </SidebarContent>
       </Sidebar>
     </>
@@ -170,6 +168,29 @@ const MobileMenuIcon = styled.div`
   }
 `;
 
+// New Styled Component for Animated Register Button
+const AnimatedButton = styled(Link)`
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+    transform: translateY(-2px);
+    text-decoration:none; 
+    color:white;
+    }
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
 const Overlay = styled.div`
   position: fixed;
   top: 0;
@@ -183,13 +204,13 @@ const Overlay = styled.div`
 const Sidebar = styled.div`
   position: fixed;
   top: 0;
-  right: 0; /* Position it to the right */
+  right: 0;
   width: 50%;
   height: 100%;
   background-color: #f1f1f1;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Change the shadow direction */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease-in-out;
-  transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')}; /* Translate out to the right */
+  transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
   z-index: 200;
   font-family: 'Montserrat', sans-serif;
 `;
@@ -212,12 +233,30 @@ const SidebarContent = styled.div`
   flex-direction: column;
   padding: 20px;
 `;
+const SidebarSpacing = styled.div`
+  margin-top: 30px;
+`;
 
-const SidebarItem = styled.a`
+const CenteredLogo = styled.img`
+  width: 100px;
+  height: auto;
+  margin: 0 auto 50px auto;
+`;
+
+const Logo = styled.img`
+  width: 100px;
+  height: auto;
+
+  @media (max-width: 1024px) {
+    width: 80px;
+  }
+`;
+
+const StyledNavItem = styled(Link)`
   text-decoration: none;
   color: black;
-  font-size: 18px;
-  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
   position: relative;
   transition: color 0.3s ease-in-out;
@@ -252,23 +291,33 @@ const SidebarItem = styled.a`
     width: 100%;
   }
 `;
+const StyledSidebarLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  padding: 10px 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease-in-out;
 
-const SidebarSpacing = styled.div`
-  margin-top: 30px;
-`;
+  &:hover {
+    color: black;
+    text-decoration: none;
+    transform: translateX(5px); /* Add animation */
+  }
 
-const CenteredLogo = styled.img`
-  width: 100px;
-  height: auto;
-  margin: 0 auto 50px auto;
-`;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background-color: black;
+    transition: width 0.3s ease-in-out;
+  }
 
-const Logo = styled.img`
-  width: 100px;
-  height: auto;
-
-  @media (max-width: 1024px) {
-    width: 80px;
+  &:hover::after {
+    width: 100%;
   }
 `;
-
