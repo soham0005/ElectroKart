@@ -16,6 +16,7 @@ className="d-block w-100 "
 id="bannerImage"
 src={item.image}
 alt={`${index} banner`}
+style={{height:'40vh'}}
 />
 <Carousel.Caption>
 <h3>{item.name}</h3>

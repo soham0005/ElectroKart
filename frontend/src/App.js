@@ -16,7 +16,9 @@ import Footer from './components/Footer.jsx';
 
 function App() {
   return (
-    <Router>
+    <div className="main">
+
+<Router>
       <PreNavbar />
       <Slider start={data.banner.start} />
       <Offers offer = {data.offer} />
@@ -39,7 +41,7 @@ function App() {
         <Route exact path="/mobileAccessories" element={<Accessories mobileAccessories={data.hotAccessories.mobileAccessories} mobileAccessoriesCover={data.hotAccessoriesCover.mobileAccessories} />} />
       </Routes>
 
-      <Heading text={"PRODUCT REVIEW"} />
+      <Heading text={"PRODUCT REVIEW"}/>
       <ProductReview productReviews={data.productReviews}/>
 
       <Heading text={"VIDEOS"} />
@@ -52,6 +54,8 @@ function App() {
 
 
     </Router>
+    </div>
+   
   );
 }
 

@@ -6,9 +6,17 @@
 }
 
 .offersSection   .offerImage{
-    margin: 0 1vmax;
+    margin: 0.1vmax;
     transition: all 0.5s;
 }
 .offersSection img:hover{
     box-shadow: 6px 6px 15px rgba(53, 53, 53, 0.363);
+}
+@media  screen and (max-width:600px) {
+    .offersSection{
+    flex-direction: column;
+    }
+    .offersSection .offerImage{
+        margin: 0.5vmax;
+    }
 }

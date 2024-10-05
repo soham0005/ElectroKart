@@ -1,7 +1,7 @@
 import { Carousel} from 'react-bootstrap'
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import '../styles/Slider.css'
 function Slider({start}) {
   return (
     <Carousel fade>
@@ -12,6 +12,7 @@ function Slider({start}) {
                 <img className='d-block w-100'
                 src={item}
                 alt='First Slide'
+             
             />
             </Carousel.Item>
         ))

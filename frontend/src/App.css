@@ -1,4 +1,9 @@
 body{
     margin: 0;
     background-color: rgb(237, 235, 235);
+    
+}
+.main{
+    overflow: hidden;
+    
 }

@@ -70,3 +70,9 @@ transition: all 0.5s;
     padding: 2vmax;
    font-size: 0.98vmax;
 }
+@media screen and (max-width:600px) {
+    .footer{
+        grid-template-columns: 1fr;
+        padding: 3vmax;
+    }
+}
