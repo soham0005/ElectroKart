@@ -10,9 +10,6 @@ function AccessoriesMenu() {
         <Link className='AccessoriesLink' to='/home'>Home</Link>
         <Link className='AccessoriesLink' to='/lifestyle'>LifeStyle</Link>
         <Link className='AccessoriesLink' to='/mobileAccessories'>Mobile Accessories</Link>
-
-
-      
     </div>
   )
 }

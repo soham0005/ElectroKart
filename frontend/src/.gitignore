@@ -3,12 +3,12 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/package.json
 # testing
 /coverage
 # production
 /build
-
+/package-lock.json
 # misc
 .DS_Store
 .env.local
@@ -18,6 +18,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-#env
-.env
