@@ -76,7 +76,6 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 100;
-  overflow:hidden;
   font-family: 'Montserrat', sans-serif;
 `;
 

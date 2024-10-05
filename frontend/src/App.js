@@ -5,13 +5,11 @@ import AllRoutes from './components/AllRoutes.jsx';
 
 function App() {
   return (
-    <div className='main'>
-      <Router>
-        <PreNavbar/>
-        <AllRoutes/>
-      </Router>
-    </div>
     
+    <Router>
+      <PreNavbar/>
+    <AllRoutes/>
+    </Router>
   );
 }
 
