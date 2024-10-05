@@ -1,47 +1,274 @@
-import React, { useState } from 'react'
-import '../styles/PreNavbar.css';
-const closeIcon=<svg xmlns="http://www.w3.org/2000/svg" id='closeSvg' height="35" viewBox="0 0 24 24" fill="currentColor"><path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path></svg>
-const menuIcon=<svg xmlns="http://www.w3.org/2000/svg" id='menuSvg' height="30" viewBox="0 0 24 24" fill="rgba(255,255,255,1)"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path></svg>
-const cartIcon = <svg xmlns="http://www.w3.org/2000/svg" id='cartSvg' height="48" viewBox="0 -960 960 960" width="48"><path d="M286.788-81Q257-81 236-102.212q-21-21.213-21-51Q215-183 236.212-204q21.213-21 51-21Q317-225 338-203.788q21 21.213 21 51Q359-123 337.788-102q-21.213 21-51 21Zm400 0Q657-81 636-102.212q-21-21.213-21-51Q615-183 636.212-204q21.213-21 51-21Q717-225 738-203.788q21 21.213 21 51Q759-123 737.788-102q-21.213 21-51 21ZM235-741l110 228h288l125-228H235Zm-30-60h589.074q22.964 0 34.945 21Q841-759 829-738L694-495q-11 19-28.559 30.5Q647.881-453 627-453H324l-56 104h491v60H277q-42 0-60.5-28t.5-63l64-118-152-322H51v-60h117l37 79Zm140 288h288-288Z"/></svg>;
-function PreNavbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import {  CiShoppingCart, CiUser } from "react-icons/ci";
+import { FiMenu } from "react-icons/fi";
+import { AiOutlineClose } from "react-icons/ai";
+import CollapsibleSearchBar from './CollapsibleSearchBar';
+import '@fontsource/montserrat';
+import logo from '../assets/logo.webp';
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+const PreNavbar = () => {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
   };
+
+
+
   return (
-    <div className="Nav">
-      <div className='preNav'>
-        <div>
-            <a href="#head">Shopify</a> <span>|</span>
-            <a href="#footer">Redmi Phones</a> <span>|</span>
-            <a href="#head">Retail Store</a> <span>|</span>
-            <p>
-              ElectroKart
-            </p>
+    <>
+      <Nav>
+        <NavLeft>
+          <Logo src={logo} alt="Logo" />
+          <NavItem href="#">Store</NavItem>
+          <NavItem href="#">Phones</NavItem>
+          <NavItem href="#">Tablets</NavItem>
+          <NavItem href="#">TV & Smart Home</NavItem>
+          <NavItem href="#">Smart Watch & Audio</NavItem>
+        </NavLeft>
+        <NavRight>
+          <NavItem href="#">Discover</NavItem>
+          <NavItem href="#">Support</NavItem>
+          <CollapsibleSearchBar></CollapsibleSearchBar>
+          <NavIcon><CiShoppingCart /></NavIcon>
+          <NavIcon><CiUser /></NavIcon>
+          <MobileMenuIcon onClick={toggleSidebar}>
+            <FiMenu />
+          </MobileMenuIcon>
+        </NavRight>
+      </Nav>
 
-        </div>
-        <div>
-        <a href="#head">HELP</a> <span>|</span>
-        <a href="#head">REGISTER</a> <span>|</span>
-        <a href="#head">{cartIcon}Cart(0)</a>
-        <p onClick={toggleMenu}>{menuOpen?closeIcon:menuIcon}</p>
-        </div>
-    </div>
+      {isSidebarOpen && <Overlay onClick={toggleSidebar} />}
 
-    {menuOpen && (
-      <div className='mobileNav'>
-            <a href="#head">Shopify</a>
-            <a href="#footer">Redmi Phones</a>
-            <a href="#head">Retail Store</a>
-        <a href="#head">HELP</a> 
-        <a href="#head">REGISTER</a>
-        <a href="#head">{cartIcon}Cart(0)</a>
-    </div>
-    )}
-    </div>
-    
-  )
-}
+      <Sidebar isOpen={isSidebarOpen}>
+        <SidebarHeader>
+          <CloseIcon onClick={toggleSidebar}>
+            <AiOutlineClose />
+          </CloseIcon>
+        </SidebarHeader>
+        <SidebarContent>
+          <CenteredLogo src={logo} alt="Logo" />
+          <SidebarItem href="#">Store</SidebarItem>
+          <SidebarItem href="#">Phones</SidebarItem>
+          <SidebarItem href="#">Tablets</SidebarItem>
+          <SidebarItem href="#">TV & Smart Home</SidebarItem>
+          <SidebarItem href="#">Smart Watch & Audio</SidebarItem>
+          <SidebarSpacing />
+          <SidebarItem href="#">Discover</SidebarItem>
+          <SidebarItem href="#">Support</SidebarItem>
+        </SidebarContent>
+      </Sidebar>
+    </>
+  );
+};
 
-export default PreNavbar
+export default PreNavbar;
+
+// Styled Components
+const Nav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow:hidden;
+  font-family: 'Montserrat', sans-serif;
+`;
+
+const NavLeft = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  @media (max-width: 1024px) {
+    display: flex;
+    gap: 10px;
+    & > a:not(:first-child) {
+      display: none;
+    }
+  }
+`;
+
+const NavRight = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  @media (max-width: 1024px) {
+    & > a {
+      display: none;
+    }
+  }
+`;
+
+const NavItem = styled.a`
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
+
+  &:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background-color: black;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+`;
+
+const NavIcon = styled.div`
+  font-size: 22px;
+  cursor: pointer;
+  color: black;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #007bff;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+`;
+
+const MobileMenuIcon = styled.div`
+  display: none;
+
+  @media (max-width: 1024px) {
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+  }
+`;
+
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 150;
+`;
+
+const Sidebar = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0; /* Position it to the right */
+  width: 50%;
+  height: 100%;
+  background-color: #f1f1f1;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Change the shadow direction */
+  transition: transform 0.3s ease-in-out;
+  transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')}; /* Translate out to the right */
+  z-index: 200;
+  font-family: 'Montserrat', sans-serif;
+`;
+
+const SidebarHeader = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  background-color: #f1f1f1;
+  color: black;
+`;
+
+const CloseIcon = styled.div`
+  font-size: 24px;
+  cursor: pointer;
+`;
+
+const SidebarContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+`;
+
+const SidebarItem = styled.a`
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  padding: 10px 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
+
+  &:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background-color: black;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+`;
+
+const SidebarSpacing = styled.div`
+  margin-top: 30px;
+`;
+
+const CenteredLogo = styled.img`
+  width: 100px;
+  height: auto;
+  margin: 0 auto 50px auto;
+`;
+
+const Logo = styled.img`
+  width: 100px;
+  height: auto;
+
+  @media (max-width: 1024px) {
+    width: 80px;
+  }
+`;
