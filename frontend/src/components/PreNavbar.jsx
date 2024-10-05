@@ -5,6 +5,7 @@ import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import CollapsibleSearchBar from './CollapsibleSearchBar';
 import '@fontsource/montserrat';
+import logo from '../assets/logo.webp';
 
 const PreNavbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -19,7 +20,7 @@ const PreNavbar = () => {
     <>
       <Nav>
         <NavLeft>
-          <Logo src="./logo.jpg" alt="Logo" />
+          <Logo src={logo} alt="Logo" />
           <NavItem href="#">Store</NavItem>
           <NavItem href="#">Phones</NavItem>
           <NavItem href="#">Tablets</NavItem>
@@ -47,7 +48,7 @@ const PreNavbar = () => {
           </CloseIcon>
         </SidebarHeader>
         <SidebarContent>
-          <CenteredLogo src="./logo.jpg" alt="Logo" />
+          <CenteredLogo src={logo} alt="Logo" />
           <SidebarItem href="#">Store</SidebarItem>
           <SidebarItem href="#">Phones</SidebarItem>
           <SidebarItem href="#">Tablets</SidebarItem>
