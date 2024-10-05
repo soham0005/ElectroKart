@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import { Box, Container, Grid, IconButton, Typography, Button } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -9,33 +8,53 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-import "../../styles/Login.css"; // Importing CSS
+import "../../styles/SignupForm.css"; // Importing CSS
 
-const SignInPage = () => {
+const SignupForm = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState(""); // State for phone number
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!email || !password) {
-      setError("Both fields are required.");
+
+    // Basic validation for email, password, and phone number
+    if (!name || !email || !password || !phone) {
+      setError("All fields are required.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[0-9]{10}$/; // Phone number must be 10 digits
+
+    if (!emailRegex.test(email)) {
+      setError("Invalid email format.");
+      return;
+    }
+
+    if (!phoneRegex.test(phone)) {
+      setError("Phone number must be 10 digits.");
       return;
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/customer/login", {
+      const response = await axios.post("http://localhost:8080/customer/register", {
+        name,
         email,
         password,
+        phone, // Sending phone number as well
       });
       console.log(response.data);
-      toast.success("Login successful");
-      navigate("/dashboard"); // Navigate to the desired route after successful login
+      toast.success("Registration successful!");
+      navigate("/login");
+      setName("");
       setEmail("");
       setPassword("");
+      setPhone("");
       setError("");
     } catch (err) {
       const errorMessage = err.response
@@ -53,22 +72,34 @@ const SignInPage = () => {
     <>
       <Container maxWidth="xl">
         <Toaster />
-        <div className="signin-wrapper">
+        <div className="signup-wrapper">
           <Grid container spacing={2} sx={{ justifyContent: "center" }}>
             <Grid item xs={12} md={6}>
               <Box sx={{ display: { xs: "none", md: "block" } }}>
                 <Lottie animationData={loginAnimation} style={{ height: "500px" }} />
               </Box>
             </Grid>
-            <Grid item xs={12} md={6} className="signin-form-container">
+            <Grid item xs={12} md={6} className="signup-form-container">
               <form onSubmit={handleSubmit}>
                 <Typography variant="h5" align="center" gutterBottom>
-                  Sign In
+                  Register
                 </Typography>
+                <input
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="input-field"
+                />
                 <input
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className="input-field"
+                />
+                <input
+                  placeholder="Phone Number" // New Phone Number field
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className="input-field"
                 />
                 <Box sx={{ position: "relative", display: "flex", alignItems: "center" }}>
@@ -98,11 +129,17 @@ const SignInPage = () => {
                   className="register-button"
                   sx={{ mt: 2 }}
                 >
-                  Sign In
+                  Register
                 </Button>
-                <Typography align="center" sx={{ mt: 2 }}>
-                  Already have an account? <a href="/signup">Register here</a>
-                </Typography>
+                <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+  Already have an account?{" "}
+  <Button
+    onClick={() => navigate("/login")}
+    sx={{ textTransform: "none", color: "primary.main" }}
+  >
+    Login
+  </Button>
+</Typography>
               </form>
             </Grid>
           </Grid>
@@ -112,4 +149,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default SignupForm;
