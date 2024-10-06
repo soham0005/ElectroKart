@@ -32,6 +32,7 @@ function Slider({ start }) {
 
   return (
     <Carousel
+      fade
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       interval={3000}

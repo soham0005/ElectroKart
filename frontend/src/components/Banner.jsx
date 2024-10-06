@@ -32,6 +32,7 @@ const Banner = ({ banner }) => {
 
     return (
         <Carousel
+            fade
             onTouchStart={handleTouchStart} 
             onTouchMove={handleTouchMove} 
             interval={5000} 
