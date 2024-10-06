@@ -4,12 +4,14 @@ import data from '../data/data.json';
 import Accessories from './Accessories';
 import Login from './User/Login.jsx';
 import Home from './Home.jsx';
+import UserLogin from './Userlogin.jsx';
 
 const AllRoutes = () => {
   return (
     <>
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route exact path='/register' element={<UserLogin/>} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/music" element={<Accessories music={data.hotAccessories.music} musicCover={data.hotAccessoriesCover.music} />} />
         <Route exact path="/smartDevices" element={<Accessories smartDevice={data.hotAccessories.smartDevice} smartDeviceCover={data.hotAccessoriesCover.smartDevice} />} />
