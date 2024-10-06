@@ -66,9 +66,19 @@ git clone https://github.com/<your-github-username>/ElectroKart.git
 cd ElectroKart
 ```
 ### 3. Install the dependencies:
+- For Frontend:
 ```bash
+cd frontend
 npm install
+npm start
 ```
+- For Backend:
+```bash
+cd backend
+npm install
+node index.js
+```
+
 ### 4.Start the application:
 ```bash
 npm start
