@@ -3,7 +3,6 @@ import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/slider.css';
 
-
 function Slider({ start }) {
   const [touchPosition, setTouchPosition] = useState(null);
 
@@ -30,7 +29,6 @@ function Slider({ start }) {
 
     setTouchPosition(null);
   };
-  
 
   return (
     <Carousel
@@ -46,6 +44,7 @@ function Slider({ start }) {
             className="d-block w-100"
             src={item}
             alt={`Slide ${index}`}
+            loading="lazy"
           />
         </Carousel.Item>
       ))}

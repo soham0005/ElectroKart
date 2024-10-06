@@ -30,8 +30,6 @@ const Banner = ({ banner }) => {
         setTouchPosition(null);
     };
 
-    
-
     return (
         <Carousel
             onTouchStart={handleTouchStart} 
@@ -41,14 +39,18 @@ const Banner = ({ banner }) => {
             pause="hover"
         >
             {banner.end.map((item, index) => (
-                
-                
-                <Carousel.Item key={item.image} id="banner">
+                <Carousel.Item
+                    key={item.image}
+                    id="banner"
+                    interval={1000}
+                    keyboard={true}
+                >
                     <img
                         className="d-block w-100"
                         id="bannerImage"
                         src={item.image}
                         alt={`${index} banner`}
+                        loading="lazy"
                     />
                     <Carousel.Caption>
                         <h3>{item.name}</h3>
