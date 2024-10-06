@@ -1,15 +1,15 @@
-import React from 'react'
-import '../styles/ProductReviewCard.css';
+import React from "react";
+import "../styles/ProductReviewCard.css";
 
-function ProducReviewCard({image,index,review,name,price}) {
+function ProducReviewCard({ image, index, review, name, price }) {
   return (
-    <div className='ProductReviewCard'>
-      <img src={image} alt={`${index} Review` } />
+    <div className="ProductReviewCard">
+      <img src={image} alt={`${index} Review`} loading="lazy" />
       <h5>{review}</h5>
       <span>{name}</span>
       <b>{price}</b>
     </div>
-  )
+  );
 }
 
-export default ProducReviewCard
+export default ProducReviewCard;
