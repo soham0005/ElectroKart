@@ -5,12 +5,14 @@ import Accessories from './Accessories';
 import Login from './User/Login.jsx';
 import Home from './Home.jsx';
 import UserLogin from './Userlogin.jsx';
+import FAQs from './FAQ-feature/FAQ.jsx';
 
 const AllRoutes = () => {
   return (
     <>
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/FAQs" element={<FAQs />} />
         <Route exact path='/register' element={<UserLogin/>} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/music" element={<Accessories music={data.hotAccessories.music} musicCover={data.hotAccessoriesCover.music} />} />

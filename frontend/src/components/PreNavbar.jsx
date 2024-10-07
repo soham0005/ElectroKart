@@ -27,7 +27,7 @@ const PreNavbar = () => {
         </NavLeft>
         <NavRight>
            <AnimatedButton to="/register">Register</AnimatedButton>
-          <NavItem href="#">Support</NavItem>
+          <NavItem href="/FAQs">FAQs</NavItem>
           <CollapsibleSearchBar />
           <NavIcon><CiShoppingCart /></NavIcon>
           <NavIcon><CiUser /></NavIcon>
@@ -54,7 +54,7 @@ const PreNavbar = () => {
           <StyledSidebarLink to="/">Smart Watch & Audio</StyledSidebarLink>
           <SidebarSpacing />
           <StyledSidebarLink to="/register">Register</StyledSidebarLink>
-          <StyledSidebarLink to="/">Support</StyledSidebarLink>
+          <StyledSidebarLink to="/FAQs">FAQs</StyledSidebarLink>
         </SidebarContent>
       </Sidebar>
     </>
