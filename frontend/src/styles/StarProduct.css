@@ -3,7 +3,7 @@
    justify-content: center;
    align-items: center;
    margin: 1vmax auto;
-   margin-left: 150px
+   
 }
 
 .starProduct>div:last-child{
@@ -14,8 +14,29 @@
 
 .starProduct img{
     transition: all 0.5s;
+   
 }
 
 .starProduct img:hover{
     box-shadow: 6px 6px 15px rgba(53, 53, 53, 0.363);
+}
+@media screen and (max-width:600px) {
+    .starProduct {
+        flex-direction: column;
+        
+    }
+    
+    .starProduct>div:first-child img{
+        height: auto;
+        width:100vw;
+        margin: 5% 0;
+    }
+    .starProduct>div:nth-child(2) img{
+        width:100vw;
+        height: auto;
+        position: relative;
+        right: 25vw;
+        margin: 5% 0;
+        
+    }
 }

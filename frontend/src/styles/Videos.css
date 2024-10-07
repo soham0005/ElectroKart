@@ -4,3 +4,11 @@
     margin: auto;
     
 }
+@media screen and (max-width:600px) {
+    .videos{
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+       
+    }
+}

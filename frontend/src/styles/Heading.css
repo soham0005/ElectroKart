@@ -16,3 +16,8 @@
     font-size: 2.0vmax;
     font-weight: 100;
 }
+@media screen and (max-width:600px) {
+    .heading p{
+        font-size: 1.5vmax;
+    }
+}

@@ -106,4 +106,49 @@ fill: rgb(34, 34, 34);
   .PreFooter2 > div:nth-child(4) > svg:hover{
     fill: rgb(94, 94, 94);
   }
+  @media  screen and (max-width:600px) {
+    .PreFooter{
+      grid-template-columns: max-content;
+    }
+   .PreFooter2{
+    height: 50vh;
+    grid-template-columns: 1fr;
+    padding: 1vmax;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+   .PreFooter2 > div > p{
+    font-size: 3vmax;
+    width: fit-content;
+  }
+  .PreFooter2 > div > span{
+    font-size: 1.5vmax;
+    width: fit-content;
+  }
+  
+  .PreFooter2 > div > div > input{
+    padding: 1vmax 1vmax;
+    font-size: 2vmax;
+    width: 30.4vmax;
+  }
+  .PreFooter2 > div > div > button{
+    
+    padding: 1vmax;
+  }
+  
+  .PreFooter2 > div:nth-child(3) > p{
+    width:fit-content;
+    padding: 1vmax;
+  }
+  .PreFooter2 > div:nth-child(2) > span{
+    width:fit-content;
+    padding-top: 1vmax;
+  }
+  .PreFooter2 > div:nth-child(3) > span{
+    width: fit-content;
+  }
+  }
   

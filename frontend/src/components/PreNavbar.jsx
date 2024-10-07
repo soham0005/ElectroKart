@@ -317,7 +317,9 @@ const StyledSidebarLink = styled(Link)`
     transition: width 0.3s ease-in-out;
   }
 
+
   &:hover::after {
     width: 100%;
   }
 `;
+

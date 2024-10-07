@@ -16,3 +16,8 @@
     color:rgb(79, 58, 32);
     border-bottom: 1px solid blue;
 }
+@media screen and (max-width: 600px) {
+    .AccessoriesMenu{
+        flex-direction: column;
+    }
+}

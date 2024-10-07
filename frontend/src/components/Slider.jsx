@@ -54,3 +54,4 @@ function Slider({ start }) {
 }
 
 export default Slider;
+

@@ -6,8 +6,9 @@
     background-color: rgb(57, 55, 55);
     color: whitesmoke;
     display: grid;
+    width: 100vw;
     grid-template-columns: 5fr 2fr;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 1000;
 }
@@ -36,10 +37,76 @@
 .preNav > div > a:hover {
     color: white;
 }
-
+.preNav>div>p{
+    display: none;
+}
 #cartSvg {
     fill: rgb(180, 180, 180);
     height: 20px;
     align-items: center;
     justify-content: center;
+}
+#menuSvg {
+    fill: rgb(180, 180, 180);
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+#closeSvg {
+    fill: rgb(180, 180, 180);
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+.mobileNav{
+    
+    position: fixed;
+    top: 50vh;
+    height: 50vh;
+    width: 100vw;
+    transform: translateY(-100%);
+    z-index: 999;
+    display: flex;
+    margin-top: 10%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color:rgb(57, 55, 55);
+
+}
+.mobileNav>a{
+    color: rgb(180, 180, 180);
+
+}
+@media screen and (max-width:600px) {
+   .preNav>div>a{
+    display: none;
+   }
+   .preNav>div>p{
+    display: block;
+    color:  rgb(180, 180, 180);
+    padding-top: 0.5vmax;
+   }
+   .preNav>div>span{
+    display: none;
+   }
+   .preNav{
+    height: 5vh;
+   }
+   #menuSvg{
+    display:block;
+    margin-top: 5px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+   }
+   #closeSvg{
+    display:block;
+    margin-top: 5px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+   }
 }

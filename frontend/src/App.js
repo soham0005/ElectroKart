@@ -5,6 +5,7 @@ import AllRoutes from './components/AllRoutes.jsx';
 
 function App() {
   return (
+    
     <Router>
       <PreNavbar/>
     <AllRoutes/>

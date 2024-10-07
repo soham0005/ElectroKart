@@ -4,6 +4,7 @@
     padding-bottom: 2vmax;
     cursor: pointer;
     transition: all 0.5s;
+   
 }
 
 .ProductReviewCard:hover{
@@ -14,10 +15,31 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1vmax;
     color:rgb(94, 94, 94);
-    margin: 0 2vmax;
+    margin: 0.1vmax;
 }
 
 .ProductReviewCard b{
     font-size: 1vmax;
     color:rgb(94, 94, 94);
+}
+.ProductReviewCard img{
+    width: 40vw;
+}
+@media screen and (max-width:600px) {
+    .ProductReviewCard{
+        margin: 0vmax;
+        margin-top: 2vmax;
+        
+    }
+    .ProductReviewCard img{
+       width: 90vw;
+       
+    }
+    .ProductReviewCard span{
+        font-size: 1.2vmax;
+    }
+    .ProductReviewCard b{
+        font-size: 2vmax;
+        padding-left: 0.5vmax;
+    }
 }
