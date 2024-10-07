@@ -1,26 +1,14 @@
-const { MongoClient } = require('mongodb');
-require('dotenv').config();
+const mongoose = require('mongoose');
 
-const url = process.env.MONGO_URL || 'mongodb://localhost:27017/';
-const dbName = process.env.DB_NAME || 'shopify';
-
-let db = null;
-
-async function connectToMongoDB() {
-  if (db) return db;
-
-  const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
-
+const connectDB = async () => {
   try {
-    await client.connect();
-    console.log('Connected successfully to MongoDB server');
-    db = client.db(dbName);
-    return db;
-  } catch (err) {
-    console.error('An error occurred while connecting to MongoDB:', err);
-    throw err;
+    const conn = await mongoose.connect(process.env.MONGO_URL);
+    console.log(
+      `Connected To Mongodb Database`
+    );
+  } catch (error) {
+    console.log(`Error in Mongodb  ${error}`);
   }
-}
+};
 
-module.exports = { connectToMongoDB };
-
+module.exports = connectDB;
