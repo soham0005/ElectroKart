@@ -1,0 +1,45 @@
+.signin-wrapper {
+  margin-top: 100px;
+  margin-bottom: 180px;
+}
+
+.signin-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #333;
+}
+
+.input-field:focus {
+  border-color: #42484e;
+  outline: none;
+}
+
+.register-button {
+  background-color: #000000;
+  color: white;
+}
+
+.register-button:hover {
+  background-color: #000000;
+}
+
+@media (max-width: 600px) {
+  .input-field {
+    font-size: 14px;
+  }
+
+  .register-button {
+    font-size: 14px;
+  }
+}
