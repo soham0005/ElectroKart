@@ -9,17 +9,38 @@ import Videos from './Videos.jsx';
 import Banner from './Banner.jsx';
 import Footer from './Footer.jsx';
 import Heading from './Heading.jsx';
+import { useLocation } from 'react-router-dom';
+import Accessories from './Accessories.jsx';
 
 const Home = () => {
+
+  const location = useLocation();
+
   return (
     <div>
     <Slider start={data.banner.start} />
       <Offers offer = {data.offer} />
       <Heading text={"FEATURED"}/>
       <StarProducts starProduct={data.starProduct} />
-      
+     
       <Heading text={"ACCESSORIES"}/>
       <AccessoriesMenu/>
+
+      {location.pathname === "/music" && (
+        <Accessories music={data.hotAccessories.music} musicCover={data.hotAccessoriesCover.music} />
+      )}
+      {location.pathname === "/smartDevices" && (
+        <Accessories smartDevice={data.hotAccessories.smartDevice} smartDeviceCover={data.hotAccessoriesCover.smartDevice} />
+      )}
+      {location.pathname === "/home" && (
+        <Accessories home={data.hotAccessories.home} homeCover={data.hotAccessoriesCover.home} />
+      )}
+      {location.pathname === "/lifestyle" && (
+        <Accessories lifeStyle={data.hotAccessories.lifeStyle} lifeStyleCover={data.hotAccessoriesCover.lifeStyle} />
+      )}
+      {location.pathname === "/mobileAccessories" && (
+        <Accessories mobileAccessories={data.hotAccessories.mobileAccessories} mobileAccessoriesCover={data.hotAccessoriesCover.mobileAccessories} />
+      )}
 
       <Heading text={"PRODUCT REVIEW"} />
       <ProductReview productReviews={data.productReviews}/>
