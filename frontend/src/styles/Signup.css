@@ -1,0 +1,54 @@
+/* Container for the sign-up page */
+.signup-wrapper {
+    margin-top: 100px;
+    margin-bottom: 180px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Form container */
+  .signup-form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Input fields */
+  .input-field {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 12px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background: transparent;
+    font-size: 16px;
+    color: black;
+  }
+  
+  /* Dark mode for inputs */
+  .dark .input-field {
+    color: white;
+    border-color: white;
+  }
+  
+  /* Error message */
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  /* Register button */
+  .register-button {
+    background-color: #151515;
+    color: white;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .register-button:hover {
+    background-color: #000000;
+  }
