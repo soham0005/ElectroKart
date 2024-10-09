@@ -27,13 +27,14 @@ const SignInPage = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/customer/login", {
+      const response = await axios.post("http://127.0.0.1:3001/api/v1/auth/login", {
         email,
         password,
       });
       console.log(response.data);
       toast.success("Login successful");
-      navigate("/dashboard"); // Navigate to the desired route after successful login
+      localStorage.setItem("token", response.data.token);
+      navigate("/"); // Navigate to the desired route after successful login
       setEmail("");
       setPassword("");
       setError("");
