@@ -4,6 +4,7 @@ const {
   loginController,
   testController,
   forgotPasswordController,
+  updateProfileController,
 } = require("../controllers/authController.js");
 
 const { requireSignIn, isAdmin } = require("../middlewares/authMiddleware.js");
@@ -34,5 +35,8 @@ router.get("/admin-auth", requireSignIn, isAdmin, (req, res) => {
 
 //forgot Password
 router.post('/forgot-password', forgotPasswordController);
+
+//update profile
+router.put('/profile',requireSignIn, updateProfileController);
 
 module.exports = router;
