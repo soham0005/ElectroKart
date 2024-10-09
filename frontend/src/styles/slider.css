@@ -14,3 +14,7 @@
 .carousel .carousel-inner .carousel-item {
     transition: transform 0.2s ease-in-out; /* Controls the transition speed and smoothness */
 }
+
+.article:hover {
+    color: #150602;  /* Change the text color on hover */
+  }
