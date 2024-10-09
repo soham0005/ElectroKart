@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import { Box, Container, Grid, IconButton, Typography, Button } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -27,16 +26,19 @@ const SignInPage = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/customer/login", {
+      const response = await axios.post("http://localhost:3001/api/v1/auth/login", {
         email,
         password,
       });
-      console.log(response.data);
+      // console.log(response.data);
       toast.success("Login successful");
+      localStorage.setItem("token", response.data.token);
+      
       navigate("/dashboard"); // Navigate to the desired route after successful login
       setEmail("");
       setPassword("");
       setError("");
+      window.location.reload();
     } catch (err) {
       const errorMessage = err.response
         ? err.response.data.message
@@ -101,7 +103,15 @@ const SignInPage = () => {
                   Sign In
                 </Button>
                 <Typography align="center" sx={{ mt: 2 }}>
-                  Already have an account? <a href="/register">Register here</a>
+                  Don't have an account? <a href="/register">Register here</a>
+                </Typography>
+                <Typography align="center" sx={{ mt: 2 }}>
+                  <Button
+                    onClick={() => navigate("/forgot-password")}
+                    sx={{ textTransform: "none", color: "primary.main" }}
+                  >
+                    Forgot Password?
+                  </Button>
                 </Typography>
               </form>
             </Grid>

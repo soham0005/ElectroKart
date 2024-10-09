@@ -1,17 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { CiShoppingCart, CiUser } from "react-icons/ci";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import CollapsibleSearchBar from './CollapsibleSearchBar';
 import '@fontsource/montserrat';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const PreNavbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const navigate = useNavigate(); 
+
+  useEffect(() => {
+    // Check if token exists in localStorage
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleLogout = () => {
+    // Remove token from localStorage and update the login state
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    navigate('/login');
+  
+  
   };
 
   return (
@@ -26,7 +46,11 @@ const PreNavbar = () => {
           <StyledNavItem to="#">Smart Watch & Audio</StyledNavItem>
         </NavLeft>
         <NavRight>
-           <AnimatedButton to="/register">Register</AnimatedButton>
+          {!isLoggedIn ? (
+            <AnimatedButton to="/register">Register</AnimatedButton>
+          ) : (
+            <AnimatedButton as="button" onClick={handleLogout}>Logout</AnimatedButton>
+          )}
           <NavItem href="/FAQs">FAQs</NavItem>
           <CollapsibleSearchBar />
           <NavIcon><CiShoppingCart /></NavIcon>
@@ -48,12 +72,16 @@ const PreNavbar = () => {
         <SidebarContent>
           <CenteredLogo src="/logo.png" alt="Logo" />
           <StyledSidebarLink to="/">Store</StyledSidebarLink>
-          <StyledSidebarLink to="/">Phones</StyledSidebarLink>
-          <StyledSidebarLink to="/">Tablets</StyledSidebarLink>
-          <StyledSidebarLink to="/">TV & Smart Home</StyledSidebarLink>
-          <StyledSidebarLink to="/">Smart Watch & Audio</StyledSidebarLink>
+          <StyledSidebarLink to="#">Phones</StyledSidebarLink>
+          <StyledSidebarLink to="#">Tablets</StyledSidebarLink>
+          <StyledSidebarLink to="#">TV & Smart Home</StyledSidebarLink>
+          <StyledSidebarLink to="#">Smart Watch & Audio</StyledSidebarLink>
           <SidebarSpacing />
-          <StyledSidebarLink to="/register">Register</StyledSidebarLink>
+          {!isLoggedIn ? (
+            <StyledSidebarLink to="/register">Register</StyledSidebarLink>
+          ) : (
+            <StyledSidebarLink as="button"  onClick={handleLogout}>Logout</StyledSidebarLink>
+          )}
           <StyledSidebarLink to="/FAQs">FAQs</StyledSidebarLink>
         </SidebarContent>
       </Sidebar>
@@ -62,6 +90,12 @@ const PreNavbar = () => {
 };
 
 export default PreNavbar;
+
+// Styled components (unchanged)
+
+
+// Styled Components (same as before)
+
 
 // Styled Components
 const Nav = styled.nav`
