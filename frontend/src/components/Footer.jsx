@@ -56,7 +56,10 @@ const Footer = ({footer}) => {
              </div>
 
              <div>
-                {facebookIcon} {youtubeIcon} {instagramIcon} {twitterIcon} 
+                <a href="https://facebook.com">{facebookIcon}</a>
+                 <a href="https://youtube.com">{youtubeIcon}</a>
+                  <a href="https://instagram.com">{instagramIcon}</a>
+                  <a href="https://twitter.com">{twitterIcon}</a>
              </div>
         </div>
 
