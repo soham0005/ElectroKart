@@ -8,6 +8,7 @@ import UserLogin from './Userlogin.jsx';
 import FAQs from './FAQ-feature/FAQ.jsx';
 import SignInPage from './User/Login.jsx';
 import SignupForm from './User/Signup.jsx';
+import ForgotPasswordPage from './ForgotPassword.jsx';
 
 const AllRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AllRoutes = () => {
         <Route exact path="/FAQs" element={<FAQs />} />
         <Route exact path='/register' element={<SignupForm/>} />
         <Route exact path="/login" element={<SignInPage/>} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route exact path="/music" element={<Accessories music={data.hotAccessories.music} musicCover={data.hotAccessoriesCover.music} />} />
         <Route exact path="/smartDevices" element={<Accessories smartDevice={data.hotAccessories.smartDevice} smartDeviceCover={data.hotAccessoriesCover.smartDevice} />} />
         <Route exact path="/home" element={<Accessories home={data.hotAccessories.home} homeCover={data.hotAccessoriesCover.home} />} />

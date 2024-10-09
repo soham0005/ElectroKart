@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URL);
+    const conn = await mongoose.connect("mongodb://localhost:27017/Electro");
     console.log(
       `Connected To Mongodb Database`
     );

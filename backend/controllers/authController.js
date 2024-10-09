@@ -3,62 +3,45 @@ const JWT = require('jsonwebtoken');
 const { comparePassword, hashPassword } = require("../helpers/authHelper.js");
 
 
- const registerController = async (req, res) => {
-    try {
-      const { name, email, password, phone, address, answer } = req.body;
-  
-      //validations
-      if (!name) {
-        return res.send({ message: "Name is Required" });
-      }
-      if (!email) {
-        return res.send({ message: "Email is Required" });
-      }
-      if (!password) {
-        return res.send({ message: "Password is Required" });
-      }
-      if (!phone) {
-        return res.send({ message: "Phone number is Required" });
-      }
-     
-  
-      //check user
-      const existingUser = await userModel.findOne({ email });
-      //existing user
-      if (existingUser) {
-        return res.status(200).send({
-          success: false,
-          message: "Already Register please login",
-        });
-      }
-  
-      //register user
-      const hashedPassword = await hashPassword(password);
-  
-      //save
-      const user = await new userModel({
-        name,
-        email,
-        phone,
-        address,
-        password: hashedPassword,
-        answer,
-      }).save();
-  
-      res.status(201).send({
-        success: true,
-        message: "User Registerd Successfully",
-        user,
-      });
-    } catch (error) {
-      console.log(error);
-      res.status(500).send({
-        success: false,
-        message: "Error in Registeration",
-        error,
-      });
-    }
-  };
+const registerController = async (req, res) => {
+  const { name, email, password, phone, answer } = req.body; // Include answer here
+
+  // Basic validation
+  if (!name || !email || !password || !phone || !answer) {
+    return res.status(400).send({
+      success: false,
+      message: "All fields are required",
+    });
+  }
+
+  // Proceed with registration logic...
+  try {
+    // Your existing logic to create the user (make sure to store the answer)
+    const user = new userModel({
+      name,
+      email,
+      password,
+      phone,
+      answer, 
+    });
+
+    await user.save();
+
+    res.status(201).send({
+      success: true,
+      message: "User Registered Successfully",
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in Registration",
+      error,
+    });
+  }
+};
+
   
   // POST LOGIN
   const loginController = async (req, res) => {
@@ -88,7 +71,7 @@ const { comparePassword, hashPassword } = require("../helpers/authHelper.js");
       }
   
       //token
-      const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
+      const token = await JWT.sign({ _id: user._id }, "anjfajglag123211jga", {
         expiresIn: "7d",
       });
       res.status(200).send({
@@ -128,7 +111,7 @@ const { comparePassword, hashPassword } = require("../helpers/authHelper.js");
   //forgotPasswordController
  const forgotPasswordController = async (req, res) => {
   try {
-    const { email, newPassword } = req.body;
+    const { email, newPassword ,answer} = req.body;
     if (!email) {
       res.status(400).send({ message: "Email is required" });
     }
@@ -144,6 +127,14 @@ const { comparePassword, hashPassword } = require("../helpers/authHelper.js");
         message: "Wrong Email ",
       });
     }
+
+    if (user.answer !== answer) {
+      return res.status(404).send({
+        success: false,
+        message: "Wrong Answer",
+      });
+    }
+
     const hashed = await hashPassword(newPassword);
     await userModel.findByIdAndUpdate(user._id, { password: hashed });
     res.status(200).send({

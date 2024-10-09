@@ -8,6 +8,11 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.0"
   },
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "jest --detectOpenHandles",
+    "lint": "eslint --fix ./*.js"
+  },
   "devDependencies": {
     "nodemon": "^3.1.7"
   }
