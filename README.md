@@ -77,6 +77,8 @@ npm start
 cd backend
 npm install
 node index.js
+MONGO_URL = ""  
+# Paste your MongoDB URL here for local testing
 ```
 
 ### 4.Start the application:
