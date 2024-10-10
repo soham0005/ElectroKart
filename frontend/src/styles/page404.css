@@ -1,0 +1,53 @@
+.page_404 {
+padding: 40px 0;
+background: #fff;
+font-family: 'Arvo', serif;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+.page_404 img {
+width: 100%;
+}
+
+.four_zero_four_bg {
+background-image: url('https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif');
+background-size: cover;
+margin-top: 100px;
+height: 400px;
+width: 700px;
+background-position: center;
+}
+
+.four_zero_four_bg h1 {
+font-size: 80px;
+margin-bottom: 50px;
+}
+
+.four_zero_four_bg h3 {
+font-size: 80px;
+}
+
+.link_404 {
+color: #fff !important;
+padding: 10px 20px;
+background: #39ac31;
+margin: 20px 0;
+display: inline-block;
+}
+
+.contant_box_404 {
+margin-top: -50px;
+padding-left: 130px;
+text-align: center;
+}
+
+.container {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+max-width: 100%;
+}
