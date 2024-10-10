@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 
 import "../../styles/Signup.css"; // Importing CSS
 
+import { base_url } from "../../api";
+
 const SignupForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -43,7 +45,7 @@ const SignupForm = () => {
 
     try {
         console.log(name, email, password, phone);
-      const response = await axios.post("http://localhost:8080/customer/register", {
+      const response = await axios.post(`${base_url}/api/v1/auth/register`, {
         name,
         email,
         password,

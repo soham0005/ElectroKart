@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 
 import "../../styles/Login.css"; // Importing CSS
 
+import { base_url } from "../../api";
+
 const SignInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +29,7 @@ const SignInPage = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/customer/login", {
+      const response = await axios.post(`${base_url}/api/v1/auth/login`, {
         email,
         password,
       });
