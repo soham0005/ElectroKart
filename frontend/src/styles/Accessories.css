@@ -1,23 +1,24 @@
-.AccessoriesMenu{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.AccessoriesMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.AccessoriesLink{
-    text-decoration: none;
-    color:black;
-    margin: 1vmax;
-    padding: 0.5vmax 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.AccessoriesLink {
+  text-decoration: none;
+  color: black;
+  margin: 1vmax;
+  padding: 0.5vmax 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.AccessoriesLink:hover{
-    text-decoration: none;
-    color:rgb(79, 58, 32);
-    border-bottom: 1px solid blue;
+.AccessoriesLink:hover,
+.AccessoriesActive {
+  text-decoration: none;
+  color: rgb(79, 58, 32);
+  border-bottom: 1px solid blue;
 }
 @media screen and (max-width: 600px) {
-    .AccessoriesMenu{
-        flex-direction: column;
-    }
+  .AccessoriesMenu {
+    flex-direction: column;
+  }
 }
