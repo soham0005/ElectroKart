@@ -4,6 +4,7 @@ import Home from './Home.jsx';
 import FAQs from './FAQ-feature/FAQ.jsx';
 import SignInPage from './User/Login.jsx';
 import SignupForm from './User/Signup.jsx';
+import Page404 from './page404.jsx';
 
 const AllRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const AllRoutes = () => {
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/lifestyle" element={<Home />} />
         <Route exact path="/mobileAccessories" element={<Home />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </>
   )
