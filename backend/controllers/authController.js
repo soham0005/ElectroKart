@@ -5,8 +5,8 @@ const { comparePassword, hashPassword } = require("../helpers/authHelper.js");
 
  const registerController = async (req, res) => {
     try {
-      const { name, email, password, phone, address, answer } = req.body;
-  
+      const { name, email, password, phone} = req.body;
+        console.log(name, email, password, phone);
       //validations
       if (!name) {
         return res.send({ message: "Name is Required" });
@@ -40,9 +40,9 @@ const { comparePassword, hashPassword } = require("../helpers/authHelper.js");
         name,
         email,
         phone,
-        address,
+        // address,
         password: hashedPassword,
-        answer,
+        // answer,
       }).save();
   
       res.status(201).send({
@@ -99,7 +99,7 @@ const { comparePassword, hashPassword } = require("../helpers/authHelper.js");
           name: user.name,
           email: user.email,
           phone: user.phone,
-          address: user.address,
+          // address: user.address,
           role: user.role,
         },
         token,
