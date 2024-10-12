@@ -55,4 +55,4 @@ const orderSchema = new mongoose.Schema({
   status: { type: String, default: 'pending' },
 });
 
-const Order = mongoose.model('Order', orderSchema);
+const Order = mongoose.model('Order', orderSchema);

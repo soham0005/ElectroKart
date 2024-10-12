@@ -74,6 +74,6 @@ const authMiddleware = async (req, res, next) => {
         const orders = await Order.find({ user: req.user.id }).populate('products.product');
         res.json(orders);
     } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-  });
+        res.status(500).json({ error: error.message });
+    }
+  });
