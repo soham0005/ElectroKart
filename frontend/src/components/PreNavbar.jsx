@@ -18,7 +18,7 @@ const PreNavbar = () => {
     <>
       <Nav>
         <NavLeft>
-          <Logo src="/logo.png" alt="Logo" />
+         <Link to="/"> <Logo src="/logo.png" alt="Logo" /></Link>
           <StyledNavItem to="/">Store</StyledNavItem>
           <StyledNavItem to="#">Phones</StyledNavItem>
           <StyledNavItem to="#">Tablets</StyledNavItem>
