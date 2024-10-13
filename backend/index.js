@@ -3,12 +3,11 @@ const cors = require('cors');
 const connectDB = require('./db.js');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoute.js')
-const express = require('express');
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
-const cors = require('cors');
+
 
 // Load environment variables
 dotenv.config();
