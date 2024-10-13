@@ -1,0 +1,139 @@
+/* Container */
+.contact {
+  padding: 3rem 0;
+  background-color: #f9f9f9; /* Adjust as per your theme */
+}
+
+.contact__container {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Left (Heading + Info), Right (Form) */
+  gap: 3rem; /* Space between the two columns */
+  align-items: center; /* Vertically center content */
+  max-width: 1200px; /* Container max width */
+  margin: 0 auto; /* Center align container */
+}
+
+/* Heading and Info Section (Left Side) */
+.contact__info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section__title {
+  font-size: 2.5rem;
+  color: #4D4D4D;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+}
+
+.contact__title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #5e5e5e;
+  margin-bottom: 0.5rem;
+  font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+}
+
+.contact__details {
+  font-size: 1rem;
+  color: #777;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
+/* Contact Form (Right Side) */
+.contact__form {
+  width: 100%;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Group */
+.contact__form-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.contact__form-div {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.contact__form-input,
+.contact__form-area textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #f7f7f7;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.contact__form-input:focus,
+.contact__form-area textarea:focus {
+  border-color: #007BFF; /* Primary theme color */
+}
+
+.contact__form-area textarea {
+  resize: none;
+  height: 150px;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  background-color: #007BFF; /* Use your button's main color */
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Slightly darker shade for hover effect */
+}
+
+/* Toastify Customization */
+.Toastify__toast-container {
+  z-index: 9999;
+}
+
+.Toastify__toast--success {
+  background-color: #28a745;
+}
+
+.Toastify__toast--error {
+  background-color: #dc3545;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contact__container {
+      grid-template-columns: 1fr; /* Stack on smaller screens */
+  }
+
+  .contact__form-group {
+      flex-direction: column;
+  }
+
+  .contact__title {
+      font-size: 1.6rem;
+  }
+
+  .section__title {
+      font-size: 2rem;
+  }
+}
