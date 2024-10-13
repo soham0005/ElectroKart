@@ -1,14 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { CiShoppingCart, CiUser } from "react-icons/ci";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import CollapsibleSearchBar from './CollapsibleSearchBar';
 import '@fontsource/montserrat';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const PreNavbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoggedin, setIsLoggedin] = useState(false);
+  const loc = useLocation();
+  let userLoggedIn = localStorage.getItem('token');
+  useEffect(() => {
+    userLoggedIn = localStorage.getItem('token');
+    if (userLoggedIn) {
+      setIsLoggedin(true);
+    }
+  }, [userLoggedIn,loc]);
+  
+
+
+   const handlelogout = () => {
+    localStorage.removeItem('token')
+    setIsLoggedin(false)
+  }
+   
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -26,11 +43,17 @@ const PreNavbar = () => {
           <StyledNavItem to="#">Smart Watch & Audio</StyledNavItem>
         </NavLeft>
         <NavRight>
-           <AnimatedButton to="/register">Register</AnimatedButton>
+          {
+            isLoggedin ? <AnimatedButton onClick={handlelogout} >Logout</AnimatedButton> : <AnimatedButton to="/register">Register</AnimatedButton>
+          }
+           
           <NavItem href="/FAQs">FAQs</NavItem>
           <CollapsibleSearchBar />
           <NavIcon><CiShoppingCart /></NavIcon>
-          <NavIcon><CiUser /></NavIcon>
+          {
+            isLoggedin ?<NavIcon><CiUser /></NavIcon> : ""
+          }
+          
           <MobileMenuIcon onClick={toggleSidebar}>
             <FiMenu />
           </MobileMenuIcon>

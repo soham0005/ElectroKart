@@ -3,21 +3,21 @@ const cors = require('cors');
 const connectDB = require('./db.js');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoute.js')
-const express = require('express');
+// const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
-const cors = require('cors');
+// const dotenv = require('dotenv');
+// const cors = require('cors');
 
 // Load environment variables
 dotenv.config();
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log('MongoDB connected'))
-.catch(err => console.error(err));
+// mongoose.connect(process.env.MONGODB_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// }).then(() => console.log('MongoDB connected'))
+// .catch(err => console.error(err));
 
 // Initialize Express app
 const app = express();
@@ -137,10 +137,7 @@ app.get('/api/orders', authMiddleware, async (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
 
 
 //configure env
@@ -161,5 +158,5 @@ app.get("/hello",async(req,res)=>{
 
 
 app.listen(3001, () => {
-  console.log("Server listening on http://127.0.0.1:3001");
+  console.log("Server listening on 3001");
 });
