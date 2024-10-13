@@ -20,10 +20,10 @@ const PreNavbar = () => {
         <NavLeft>
          <Link to="/"> <Logo src="/logo.png" alt="Logo" /></Link>
           <StyledNavItem to="/">Store</StyledNavItem>
-          <StyledNavItem to="#">Phones</StyledNavItem>
-          <StyledNavItem to="#">Tablets</StyledNavItem>
-          <StyledNavItem to="#">TV & Smart Home</StyledNavItem>
-          <StyledNavItem to="#">Smart Watch & Audio</StyledNavItem>
+          <StyledNavItem to="https://www.mi.com/in/phone/">Phones</StyledNavItem>
+          <StyledNavItem to="https://www.mi.com/in/tablet/">Tablets</StyledNavItem>
+          <StyledNavItem to="https://www.mi.com/in/tv-smart-home/">TV & Smart Home</StyledNavItem>
+          <StyledNavItem to="https://www.mi.com/in/watch-audio/">Smart Watch & Audio</StyledNavItem>
         </NavLeft>
         <NavRight>
            <AnimatedButton to="/register">Register</AnimatedButton>
@@ -48,10 +48,10 @@ const PreNavbar = () => {
         <SidebarContent>
           <CenteredLogo src="/logo.png" alt="Logo" />
           <StyledSidebarLink to="/">Store</StyledSidebarLink>
-          <StyledSidebarLink to="/">Phones</StyledSidebarLink>
-          <StyledSidebarLink to="/">Tablets</StyledSidebarLink>
-          <StyledSidebarLink to="/">TV & Smart Home</StyledSidebarLink>
-          <StyledSidebarLink to="/">Smart Watch & Audio</StyledSidebarLink>
+          <StyledSidebarLink to="https://www.mi.com/in/phone/">Phones</StyledSidebarLink>
+          <StyledSidebarLink to="https://www.mi.com/in/tablet/">Tablets</StyledSidebarLink>
+          <StyledSidebarLink to="https://www.mi.com/in/tv-smart-home/">TV & Smart Home</StyledSidebarLink>
+          <StyledSidebarLink to="https://www.mi.com/in/watch-audio/">Smart Watch & Audio</StyledSidebarLink>
           <SidebarSpacing />
           <StyledSidebarLink to="/register">Register</StyledSidebarLink>
           <StyledSidebarLink to="/FAQs">FAQs</StyledSidebarLink>
