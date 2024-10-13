@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../styles/PreFooter.css"
 import "../styles/Footer.css"
-
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const repeatIcon = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/></svg>
 
@@ -28,6 +30,38 @@ const instagramIcon =<svg width="24" height="24" xmlns="http://www.w3.org/2000/s
 
 
 const Footer = ({footer}) => {
+    const [loading ,setLoading] =useState(false)
+    const [email,setEmail]=useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setLoading(true)
+        emailjs
+          .send(
+            process.env.REACT_APP_EMAILJS_SERVICE_ID,
+            process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+            {
+              
+              to_email: email,
+            
+            },
+            process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+          )
+          .then(
+            (result) => {
+             setLoading(false)
+              toast("message successfully sent");
+            },
+            (error) => {
+              toast("error occured")
+            }
+          );
+       
+        setEmail("");
+       
+        
+      };
+
     return (
        <>
         <div className="PreFooter" id='footer'>
@@ -43,11 +77,12 @@ const Footer = ({footer}) => {
              <div> <p>LET'S STAY IN TOUCH</p><span>Get updates on sales specials and more</span></div>
 
              <div>
-                 <div>
-                     <input type="email" name="email" placeholder="Enter Email Address" />
-                     <button>›</button>
+                 <div className='subscribe-input'>
+                     <input type="email" name="email" value={email} placeholder="Enter Email Address" onChange={(e)=> setEmail(e.target.value)} />
+                     <button onClick={handleSubmit}>{loading ? "Subscribing..." : "Subscribe"}</button>
                  </div>
                  <span>Thanks. You're on our email list for special offers.</span>
+                 <ToastContainer/>
              </div>
 
              <div>
