@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/Signup.css"; // Importing CSS
 
 const SignupForm = () => {
- 
+  const URL = process.env.REACT_APP_API_URL;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,7 +44,7 @@ const SignupForm = () => {
 
     try {
         console.log(name, email, password, phone);
-      const response = await axios.post(`http://127.0.0.1:3001/api/v1/auth/register`, {
+      const response = await axios.post(`${URL}/api/v1/auth/register`, {
         name,
         email,
         password,

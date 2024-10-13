@@ -45,7 +45,12 @@ fill: rgb(34, 34, 34);
     justify-content: center;
     align-items: center;
   }
-  
+
+  .subscribe-input{
+
+    display: flex;
+    gap: 5px;
+  }
   .PreFooter2 > div > p{
     color: rgba(0, 0, 0, 0.842);
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -60,7 +65,7 @@ fill: rgb(34, 34, 34);
   }
   
   .PreFooter2 > div > div > input{
-    border: none;
+    /* border: none; */
     outline: none;
     padding: 0.5vmax 1vmax;
     background-color: rgb(255, 255, 255);
@@ -69,14 +74,21 @@ fill: rgb(34, 34, 34);
     width: 20.4vmax;
   }
   .PreFooter2 > div > div > button{
-    border: none;
+    /* border: none; */
     padding: 0.5vmax;
     background-color: rgb(255, 255, 255);
     outline: none;
+
   }
-  .PreFooter2 > div > div{
+
+  .PreFooter2 > div > div > button:hover {
+    background-color: #f1f1f1; /* Change background color on hover */
+    color: black; /* Change text color on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+  /* .PreFooter2 > div > div{
   border: 1px solid rgba(126, 126, 126, 0.493);
-  }
+  } */
   
   .PreFooter2 > div:nth-child(2) > span{
     width: 22vmax;

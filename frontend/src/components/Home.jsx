@@ -11,6 +11,7 @@ import Footer from './Footer.jsx';
 import Heading from './Heading.jsx';
 import { useLocation } from 'react-router-dom';
 import Accessories from './Accessories.jsx';
+import Contact from './contact.jsx';
 
 const Home = () => {
 
@@ -50,6 +51,9 @@ const Home = () => {
     
       <Heading text={"IN THE PRESS"} />
       <Banner  banner={data.banner}/>
+
+      <Heading text={"Contact US"} />
+      <Contact contact={data.contact} />
 
       <Footer footer={data.footer} />
 
