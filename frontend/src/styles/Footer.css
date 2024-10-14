@@ -1,8 +1,7 @@
-
-
 .footer{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
     padding: 4.5vmax;
     background-color: rgb(37, 37, 37);
     color: rgb(197, 197, 197);
@@ -74,5 +73,31 @@ transition: all 0.5s;
     .footer{
         grid-template-columns: 1fr;
         padding: 3vmax;
+    }
+}
+
+.footer > div:last-child {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer > div:last-child p {
+    margin-bottom: 10px;
+}
+
+.gtranslate_wrapper {
+    width: 100%;
+    max-width: 200px;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        grid-template-columns: 1fr;
+    }
+
+    .footer > div:last-child {
+        align-items: flex-start;
     }
 }

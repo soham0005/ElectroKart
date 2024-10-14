@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "../styles/PreFooter.css"
 import "../styles/Footer.css"
 import emailjs from '@emailjs/browser';
@@ -32,6 +32,17 @@ const instagramIcon =<svg width="24" height="24" xmlns="http://www.w3.org/2000/s
 const Footer = ({footer}) => {
     const [loading ,setLoading] =useState(false)
     const [email,setEmail]=useState("");
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.gtranslate.net/widgets/latest/popup.js';
+        script.defer = true;
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -141,6 +152,11 @@ const Footer = ({footer}) => {
 
                   <div>
                       <div>Chat with our Virtual AI Bot(24/7 Live Agent Support)</div><button>CHAT NOW</button>
+                  </div>
+
+                  <div>
+                      <p>LANGUAGE</p>
+                      <div className="gtranslate_wrapper"></div>
                   </div>
 
 
