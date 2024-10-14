@@ -70,9 +70,34 @@ transition: all 0.5s;
     padding: 2vmax;
    font-size: 0.98vmax;
 }
-@media screen and (max-width:600px) {
-    .footer{
+
+a{
+    font-size: 10px;
+}
+@media screen and (max-width:900px) {
+    .footer {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 2;
+        padding: 20px;
+    }
+}
+@media screen and (max-width:768px) {
+    .footer {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 2;
+        padding: 15px;
+    }
+}
+@media screen and (max-width:500px) {
+    .footer {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 2;
+        padding: 10px;
+    }
+}
+@media screen and (max-width:350px) {
+    .footer {
         grid-template-columns: 1fr;
-        padding: 3vmax;
+        padding: 10px;
     }
 }

@@ -100,7 +100,7 @@ const Footer = ({footer}) => {
 
         <div className="footer">
                   <div> 
-                     <p> SUPPORT</p>
+                     <p style={{ fontSize: "1.3rem", color: "rgb(197, 197, 197)", fontWeight:"bolder", maxWidth:"15%" }}> SUPPORT</p>
                       {footer.support.map((item,index)=>(
                          <a key={item.url} href={item.url}>{item.name}</a>
 
@@ -108,7 +108,7 @@ const Footer = ({footer}) => {
                   </div>
 
                   <div>
-                 <p> SHOP AND LEARN</p>
+                 <p style={{ fontSize: "1.3rem", color: "rgb(197, 197, 197)", fontWeight:"bolder", maxWidth:"15%" }}> SHOP AND LEARN</p>
                   {footer.shopAndLearn.map((item,index)=>(
                          <a key={item.url} href={item.url}>{item.name} </a>
 
@@ -116,7 +116,7 @@ const Footer = ({footer}) => {
 
                   </div>
                   <div>
-                   <p> RETAIL STORE</p>
+                   <p style={{ fontSize: "1.3rem", color: "rgb(197, 197, 197)", fontWeight:"bolder", maxWidth:"15%" }}> RETAIL STORE</p>
                     {footer.retailStore.map((item,index)=>(
                          <a key={item.url} href={item.url}>{item.name}</a>
 
@@ -124,7 +124,7 @@ const Footer = ({footer}) => {
                   </div>
 
                   <div>
-                           <p>  ABOUT</p>
+                           <p style={{ fontSize: "1.3rem", color: "rgb(197, 197, 197)", fontWeight:"bolder", maxWidth:"15%" }}>  ABOUT</p>
                              {footer.aboutUS.map((item,index)=>(
                          <a key={item.url} href={item.url}>{item.name}</a>
 
@@ -132,7 +132,7 @@ const Footer = ({footer}) => {
                   </div>
 
                   <div>
-                 <p> CONTACT US</p>
+                 <p style={{ fontSize: "1.3rem", color: "rgb(197, 197, 197)", fontWeight:"bolder", maxWidth: "15%" }}> CONTACT US</p>
                   {footer.contactUs.map((item,index)=>(
                          <a key={item.url} href={item.url}>{item.name}</a>
 
@@ -140,7 +140,7 @@ const Footer = ({footer}) => {
                   </div>
 
                   <div>
-                      <div>Chat with our Virtual AI Bot(24/7 Live Agent Support)</div><button>CHAT NOW</button>
+                      <div>Chat with our Virtual AI Bot(24/7 Live Agent Support)</div><button style={{border: "2px solid white", borderRadius:"5px", fontWeight:"bold"}}>CHAT NOW</button>
                   </div>
 
 
