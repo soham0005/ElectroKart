@@ -2,16 +2,41 @@
 
 ### An Online E-commerce App built with React and Node.js.
 
+## 🚀Featured In
+
+<table>
+
+   <tr>
+      <th>Event Logo</th>
+      <th>Event Name</th>
+      <th>Event Description</th>
+   </tr>
+   <tr>
+      <td><img src="gssoc.jpg" width="200" height="auto" loading="lazy" alt="GSSoC 24"/></td>
+      <td>GirlScript Summer of Code 2024</td>
+      <td>GirlScript Summer of Code is a three-month-long Open Source Program conducted every summer by GirlScript Foundation. It is an initiative to bring more beginners to Open-Source Software Development.</td>
+   </tr>
+    <tr>
+      <td><img src="hacktober.jpg" width="200" height="auto" loading="lazy" alt="Hacktoberfest 2024"/></td>
+      <td>Hacktoberfest 2024</td>
+      <td>Hacktoberfest is a month-long celebration of open source software run by DigitalOcean, GitHub, and Twilio. It encourages contributions to open source projects and promotes a global community of developers.</td>
+   </tr>
+
+</table>
+
+<br />
+
 ## Table of Contents
 
 1. [Project Overview](#1-project-overview)
 2. [Features](#2-features)
-3. [Tech Stack](3-tech-stack)
+3. [Tech Stack](#3-tech-stack)
 4. [Installation](#4-installation)
 5. [Usage](#5-usage)
 6. [Contributing](#6-contributing-)
 7. [Pull Request Guidelines](#7-pull-request-review-criteria-)
 8. [Code of Conduct](#8-code-of-conduct-)
+
 
 ## 1. Project Overview
 
@@ -148,13 +173,38 @@ We strive to create a welcoming and inclusive environment for all contributors a
 3. **Collaboration**: Be open to constructive feedback and collaboration.
 4. **Professionalism**: Maintain professionalism in all interactions, online and offline.
 
+## Contributors
+
+A heartfelt thank you to the following individuals for their valuable contributions to this project. Your support and dedication are greatly appreciated:
+
+<a href="https://github.com/soham0005/ElectroKart/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=soham0005/ElectroKart" />
+</a>
+
+<br>
+
+## Stargazers
+
+<div align='center'>
+
+[![Stargazers repo roster for @soham0005/ElectroKart](https://reporoster.com/stars/soham0005/ElectroKart)](https://github.com/soham0005/ElectroKart/stargazers)
+
+</div>
+
+## Forkers
+<div align='center'>
+
+[![Forkers repo roster for @soham0005/ElectroKart](https://reporoster.com/forks/soham0005/ElectroKart)](https://github.com/soham0005/ElectroKart/network/members)
+
+</div>
+
 ### Reporting Issues
 
 If you experience or witness any behavior that violates this Code of Conduct, please report it by contacting the project maintainers.
 
 For more detailed guidelines, please refer to our [full Code of Conduct](https://github.com/soham0005/ElectroKart/blob/master/Code_Of_Conduct.md).
 
----
+
 
 ## Our Contributors
 
@@ -166,6 +216,12 @@ We extend our heartfelt gratitude for your invaluable contribution to our projec
     <img src="https://contrib.rocks/image?repo=soham0005/ElectroKart" />
 </a>
 
+</div>
+
+<div align="center">
+    <a href="#top">
+        <img src="https://img.shields.io/badge/Back%20to%20Top-000000?style=for-the-badge&logo=github&logoColor=white" alt="Back to Top">
+    </a>
 </div>
 
 ---
