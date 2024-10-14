@@ -104,7 +104,7 @@ const SignInPage = () => {
                   Sign In
                 </Button>
                 <Typography align="center" sx={{ mt: 2 }}>
-                  Already have an account? <a href="/register">Register here</a>
+                  New to ElectroKart? <a href="/register">Register here</a>
                 </Typography>
               </form>
             </Grid>
