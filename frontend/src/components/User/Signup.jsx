@@ -31,6 +31,7 @@ const SignupForm = () => {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^[0-9]{10}$/; // Phone number must be 10 digits
+    const passRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Z])(?=.*[a-z]).+$/;
 
     if (!emailRegex.test(email)) {
       setError("Invalid email format.");
@@ -39,6 +40,16 @@ const SignupForm = () => {
 
     if (!phoneRegex.test(phone)) {
       setError("Phone number must be 10 digits.");
+      return;
+    }
+
+    if (password.length < 8) {
+      setError("Password Length must be 8");
+      return;
+    }
+    
+    if (!passRegex.test(password)) {
+      setError("Password must contain at least one uppercase, one lowercase, one special character!");
       return;
     }
 
