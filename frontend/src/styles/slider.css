@@ -1,3 +1,4 @@
+/* Styling for carousel controls - from fix/carousel-navigations-button-not-visible branch */
 .carousel-control-prev,
 .carousel-control-next {
     position: absolute;
@@ -44,20 +45,14 @@
 .carousel-control-prev::before,
 .carousel-control-next::before {
     font-family: 'FontAwesome';
-    font-size: 20px;
-    color: white;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Shadow for visibility on light backgrounds */
-}
-
-.carousel-control-prev::before {
-    content: '\f104'; /* FontAwesome left arrow */
+    content: "\f104"; /* Unicode for left arrow (adjust based on your custom arrow) */
+    font-size: 24px; /* Custom font size for the arrow */
 }
 
 .carousel-control-next::before {
-    content: '\f105'; /* FontAwesome right arrow */
+    content: "\f105"; /* Unicode for right arrow */
 }
 
-/* Style adjustments for the carousel's caption */
 .carousel-caption {
     background-color: rgba(0, 0, 0, 0.6); /* Black semi-transparent background */
     color: white;
@@ -67,3 +62,26 @@
     margin: auto;
     text-align: center;
 }
+
+/* Styling for carousel images - from master branch */
+.carousel .carousel-inner .carousel-item img {
+    width: 100%; /* Ensure the image fills the entire width of the carousel */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: cover; /* Ensure images fit nicely without stretching */
+    border-radius: 8px; /* Optional: Adds rounded corners to the images */
+}
+
+/* Smooth transition for carousel items - from master branch */
+.carousel .carousel-inner .carousel-item {
+    transition: transform 0.5s ease-in-out; /* Smoothen the transition effect */
+}
+
+/* Custom styling for carousel indicators - from master branch */
+.carousel .carousel-indicators button {
+    width: 50px; /* Reduced width for better visibility */
+    height: 3px;
+    background-color: white;
+    opacity: 0.6;
+    margin: 10px;
+}
+
