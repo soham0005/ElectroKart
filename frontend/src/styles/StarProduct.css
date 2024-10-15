@@ -1,38 +1,30 @@
 .starProduct {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1vmax auto;
-}
-
-.starProduct > div:last-child {
-  display: flex;
-  flex-wrap: wrap;
-  width: 40.5%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Create 2 equal columns */
+  gap: 1vmax; /* Space between images */
+  width: 80%; /* Adjust the width to fit properly in the layout */
+  margin: 2vmax auto;
 }
 
 .starProduct img {
+  width: 100%; /* Ensure the images take up the full grid column width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
   transition: all 0.5s;
+  border-radius: 8px; /* Optional: Adds rounded corners */
 }
 
 .starProduct img:hover {
   box-shadow: 6px 6px 15px rgba(53, 53, 53, 0.363);
 }
+
 @media screen and (max-width: 600px) {
   .starProduct {
-    flex-direction: column;
+    grid-template-columns: 1fr; /* On smaller screens, stack images in one column */
   }
 
-  .starProduct > div:first-child img {
-    height: auto;
-    width: 100vw;
-    margin: 5% 0;
-  }
-  .starProduct > div:nth-child(2) img {
-    width: 100vw;
-    height: auto;
-    position: relative;
-    right: 25vw;
-    margin: 5% 0;
+  .starProduct img {
+    width: 100%;
+    margin-bottom: 2vmax;
   }
 }
