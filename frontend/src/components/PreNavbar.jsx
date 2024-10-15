@@ -48,7 +48,7 @@ const PreNavbar = () => {
           }
            
           <NavItem href="/FAQs">FAQs</NavItem>
-          <CollapsibleSearchBar />
+          {/* <CollapsibleSearchBar /> */}
           <NavIcon><CiShoppingCart /></NavIcon>
           {
             isLoggedin ?<NavIcon><CiUser /></NavIcon> : ""
