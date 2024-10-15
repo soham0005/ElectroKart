@@ -168,38 +168,7 @@ const SignInPage = () => {
                       Google
                     </Button>
                   </Grid>
-                  <Grid item>
-                    <Button
-                      variant="outlined"
-                      startIcon={<FacebookIcon />}
-                      onClick={() => handleSocialLogin("Facebook")}
-                      sx={{ minWidth: "150px" }}
-                    >
-                      Facebook
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button
-                      variant="outlined"
-                      startIcon={<TwitterIcon />}
-                      onClick={() => handleSocialLogin("Twitter")}
-                      sx={{ minWidth: "150px" }}
-                    >
-                      Twitter
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button
-                      variant="outlined"
-                      startIcon={<GitHubIcon />}
-                      onClick={() => handleSocialLogin("GitHub")}
-                      sx={{ minWidth: "150px" }}
-                    >
-                      GitHub
-                    </Button>
-                  </Grid>
                 </Grid>
-
                 <Typography align="center" sx={{ mt: 3 }}>
                   New to ElectroKart?{" "}
                   <a href="/register" className="link">
