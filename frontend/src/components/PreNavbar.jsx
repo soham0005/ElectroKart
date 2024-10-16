@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { CiShoppingCart, CiUser } from "react-icons/ci";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
-import CollapsibleSearchBar from './CollapsibleSearchBar';
 import '@fontsource/montserrat';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -48,7 +47,7 @@ const PreNavbar = () => {
           }
            
           <NavItem href="/FAQs">FAQs</NavItem>
-          <CollapsibleSearchBar />
+          
           <NavIcon><CiShoppingCart /></NavIcon>
           {
             isLoggedin ?<NavIcon><CiUser /></NavIcon> : ""
