@@ -50,12 +50,15 @@ const FAQs = () => {
                     {/* Conditional rendering: if no results, display a message */}
                     {filteredFAQs.length > 0 ? (
                         filteredFAQs.map((faq, index) => (
-                            <div key={index} className="faq-item">
+                            <div key={index} className="faq-item ">
                                 <div
-                                    className={`faq-question ${activeIndex === index ? 'active' : ''}`}
+                                    className={`faq-question   ${activeIndex === index ? 'active' : ''}`}
                                     onClick={() => toggleAnswer(index)}
                                 >
-                                    {faq.question}
+                                    {faq.question} 
+                                    <div>
+                                        <i className="fas fa-angle-down"></i>
+                                    </div>
                                 </div>
                                 {activeIndex === index && (
                                     <div className="faq-answer">
