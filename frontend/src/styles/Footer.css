@@ -186,7 +186,7 @@ transition: all 0.5s;
     height: 45px;
     padding: 12px;
     border-radius: 12px;
-    width: 500%; /* Increased width */
+    width: 80%; /* Increased width */
     max-width: 500px; /* Increased max-width */
     border: 1.5px solid lightgrey;
     outline: none;
@@ -206,8 +206,19 @@ transition: all 0.5s;
     border: 2px solid grey;
   }
   
-
-
+#sub{
+    font-size: 13px;
+    padding: 1em 0.7em;
+    font-weight: 100;
+    background: #1f2937;
+    color: white;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  
 @media (max-width: 768px) {
     .footer {
         grid-template-columns: 1fr;
