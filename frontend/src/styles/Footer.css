@@ -101,12 +101,28 @@
 .social-icons a {
     color: #cccccc;
     font-size: 20px;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: all .38s ease-in-out;
 }
 
 .social-icons a:hover {
-    color: #3498db;
-    transform: translateY(-3px);
+    transform: scale(1.2);
+    padding: 0px 2px;
+    color: white;
+    border-radius: 4px;
+}
+#linkedin:hover{
+    background-color:rgb(62, 62, 255) ;
+}
+#instagram:hover{
+    background-color: #e1306c;
+}
+#github:hover{
+    color: #2c2c44;
+    background-color: #ffffff;
+}
+#twitter:hover{
+    color: black;
+    background-color: #ffffff;
 }
 
 .footer-bottom {

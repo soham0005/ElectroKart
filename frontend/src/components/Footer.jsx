@@ -139,24 +139,28 @@ function Footer({ footer }) {
 					<div className="social-icons">
 						<a
 							href="https://www.instagram.com"
+              id="instagram"
 							target="_blank"
 							rel="noopener noreferrer">
 							<FaInstagram />
 						</a>
 						<a
 							href="https://www.linkedin.com"
+              id="linkedin"
 							target="_blank"
 							rel="noopener noreferrer">
 							<FaLinkedin />
 						</a>
 						<a
 							href="https://www.twitter.com"
+              id="twitter"
 							target="_blank"
 							rel="noopener noreferrer">
 							<FaXTwitter />
 						</a>
 						<a
 							href="https://github.com/soham0005/ElectroKart"
+              id="github"
 							target="_blank"
 							rel="noopener noreferrer">
 							<FaGithub />
