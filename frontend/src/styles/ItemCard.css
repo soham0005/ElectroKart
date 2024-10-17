@@ -3,11 +3,12 @@
     flex-direction: column;
     align-items: center; 
     background-color: white;
-    width: 30%; /* Adjust width slightly */
-    margin:  1vmax; /* Increase margin for better spacing between cards */
+    width: 30%; 
+    margin: 1vmax; 
     transition: all 0.5s;
     cursor: pointer;
-    border-radius: 8px; /* Optional: Add rounded corners */
+    border-radius: 8px; 
+    position: relative; 
 }
 
 .ItemCard:hover {
@@ -31,3 +32,18 @@
     color: orangered;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+/* Wishlist icon styling */
+.wishlist-icon {
+    position: absolute;
+    top: 10px;  
+    right: 10px;
+    font-size: 22px; 
+    cursor: pointer; 
+    transition: color 0.3s ease;
+}
+
+.wishlist-icon:hover {
+    color: red; 
+}
+

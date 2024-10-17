@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import { CiShoppingCart, CiUser } from "react-icons/ci";
 import { FiMenu } from "react-icons/fi";
-import { AiOutlineClose } from "react-icons/ai";
-import '@fontsource/montserrat';
-import { Link, useLocation } from 'react-router-dom';
+import { AiOutlineClose, AiOutlineHeart } from "react-icons/ai";
+import "@fontsource/montserrat";
+import { Link, useLocation } from "react-router-dom";
+
 
 const PreNavbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isLoggedin, setIsLoggedin] = useState(false);
   const loc = useLocation();
-  let userLoggedIn = localStorage.getItem('token');
+
   useEffect(() => {
-    userLoggedIn = localStorage.getItem('token');
+    const userLoggedIn = localStorage.getItem("token");
     if (userLoggedIn) {
       setIsLoggedin(true);
     }
-  }, [userLoggedIn,loc]);
-  
+  }, [loc]);
 
-
-   const handlelogout = () => {
-    localStorage.removeItem('token')
-    setIsLoggedin(false)
-  }
-   
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedin(false);
+  };
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -34,25 +32,48 @@ const PreNavbar = () => {
     <>
       <Nav>
         <NavLeft>
-         <Link to="/"> <Logo src="/logo.png" alt="Logo" /></Link>
+          <Link to="/">
+            {" "}
+            <Logo src="/logo.png" alt="Logo" />
+          </Link>
           <StyledNavItem to="/">Store</StyledNavItem>
-          <StyledNavItem to="https://www.mi.com/in/phone/">Phones</StyledNavItem>
-          <StyledNavItem to="https://www.mi.com/in/tablet/">Tablets</StyledNavItem>
-          <StyledNavItem to="https://www.mi.com/in/tv-smart-home/">TV & Smart Home</StyledNavItem>
-          <StyledNavItem to="https://www.mi.com/in/watch-audio/">Smart Watch & Audio</StyledNavItem>
+          <StyledNavItem to="https://www.mi.com/in/phone/">
+            Phones
+          </StyledNavItem>
+          <StyledNavItem to="https://www.mi.com/in/tablet/">
+            Tablets
+          </StyledNavItem>
+          <StyledNavItem to="https://www.mi.com/in/tv-smart-home/">
+            TV & Smart Home
+          </StyledNavItem>
+          <StyledNavItem to="https://www.mi.com/in/watch-audio/">
+            Smart Watch & Audio
+          </StyledNavItem>
         </NavLeft>
         <NavRight>
-          {
-            isLoggedin ? <AnimatedButton onClick={handlelogout} >Logout</AnimatedButton> : <AnimatedButton to="/register">Register</AnimatedButton>
-          }
-           
+          {isLoggedin ? (
+            <AnimatedButton onClick={handleLogout}>Logout</AnimatedButton>
+          ) : (
+            <AnimatedButton to="/register">Register</AnimatedButton>
+          )}
+
           <NavItem href="/FAQs">FAQs</NavItem>
-          
-          <NavIcon><CiShoppingCart /></NavIcon>
-          {
-            isLoggedin ?<NavIcon><CiUser /></NavIcon> : ""
-          }
-          
+
+          <NavIcon>
+            <CiShoppingCart />
+          </NavIcon>
+          <NavIcon>
+            <Link to="/wishlist">
+              <AiOutlineHeart />
+            </Link>
+          </NavIcon>
+          {isLoggedin ? (
+            <NavIcon>
+              <CiUser />
+            </NavIcon>
+          ) : (
+            ""
+          )}
           <MobileMenuIcon onClick={toggleSidebar}>
             <FiMenu />
           </MobileMenuIcon>
@@ -70,10 +91,18 @@ const PreNavbar = () => {
         <SidebarContent>
           <CenteredLogo src="/logo.png" alt="Logo" />
           <StyledSidebarLink to="/">Store</StyledSidebarLink>
-          <StyledSidebarLink to="https://www.mi.com/in/phone/">Phones</StyledSidebarLink>
-          <StyledSidebarLink to="https://www.mi.com/in/tablet/">Tablets</StyledSidebarLink>
-          <StyledSidebarLink to="https://www.mi.com/in/tv-smart-home/">TV & Smart Home</StyledSidebarLink>
-          <StyledSidebarLink to="https://www.mi.com/in/watch-audio/">Smart Watch & Audio</StyledSidebarLink>
+          <StyledSidebarLink to="https://www.mi.com/in/phone/">
+            Phones
+          </StyledSidebarLink>
+          <StyledSidebarLink to="https://www.mi.com/in/tablet/">
+            Tablets
+          </StyledSidebarLink>
+          <StyledSidebarLink to="https://www.mi.com/in/tv-smart-home/">
+            TV & Smart Home
+          </StyledSidebarLink>
+          <StyledSidebarLink to="https://www.mi.com/in/watch-audio/">
+            Smart Watch & Audio
+          </StyledSidebarLink>
           <SidebarSpacing />
           <StyledSidebarLink to="/register">Register</StyledSidebarLink>
           <StyledSidebarLink to="/FAQs">FAQs</StyledSidebarLink>
@@ -96,7 +125,7 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 100;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 `;
 
 const NavLeft = styled.div`
@@ -204,9 +233,9 @@ const AnimatedButton = styled(Link)`
 
   &:hover {
     transform: translateY(-2px);
-    text-decoration:none; 
-    color:white;
-    }
+    text-decoration: none;
+    color: white;
+  }
 
   &:active {
     transform: translateY(1px);
@@ -232,9 +261,9 @@ const Sidebar = styled.div`
   background-color: #f1f1f1;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease-in-out;
-  transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
+  transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(100%)")};
   z-index: 200;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 `;
 
 const SidebarHeader = styled.div`
@@ -339,9 +368,7 @@ const StyledSidebarLink = styled(Link)`
     transition: width 0.3s ease-in-out;
   }
 
-
   &:hover::after {
     width: 100%;
   }
 `;
-
