@@ -55,7 +55,11 @@ const SignInPage = () => {
     setLoading(true);
 
     try {
+
+      const response = await axios.post("http://localhost:3000/login", {
+
       const response = await axios.post(`${URL}/api/v1/auth/login`, {
+
         email,
         password,
       });
@@ -177,6 +181,22 @@ const SignInPage = () => {
                   {loading ? <CircularProgress size={24} /> : "Sign In"}
                 </Button>
 
+                <Button
+                  variant="contained"
+                  type="button"
+                  fullWidth
+                  className="register-button"
+                  onClick={() => {
+                    navigate("/forgot-password");
+                  }}
+                  sx={{ mt: 2 }}
+                >
+                  Forgot Password
+                </Button>
+                <Typography align="center" sx={{ mt: 2 }}>
+                  Don't have an account? <a href="/register">Register here</a>
+
+
                 <Divider sx={{ my: 3 }}>or sign in with</Divider>
 
                 
@@ -197,6 +217,7 @@ const SignInPage = () => {
                   <a href="/register" className="link">
                     Register here
                   </a>
+
                 </Typography>
               </form>
             </Box>
