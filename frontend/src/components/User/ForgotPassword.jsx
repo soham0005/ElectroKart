@@ -1,41 +1,48 @@
 "use client";
 import React, { useState } from "react";
-import { Box, Container, Grid, IconButton, Typography, Button } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  IconButton,
+  Typography,
+  Button,
+} from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import Lottie from "lottie-react";
-import loginAnimation from "../../Lottie-animation/loginAnimation.json";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import "../../styles/Login.css";
 
-import "../../styles/Login.css"; // Importing CSS
-
-const SignInPage = () => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!email || !password) {
+
+    if (!email || !newPassword) {
       setError("Both fields are required.");
       return;
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:3000/forgot-password",
+        {
+          email,
+          newPassword,
+        }
+      );
       console.log(response.data);
-      toast.success("Login successful");
-      navigate("/dashboard"); // Navigate to the desired route after successful login
+      toast.success("Password reset successful");
+      navigate("/login"); // Navigate to login page after successful reset
       setEmail("");
-      setPassword("");
+      setNewPassword("");
       setError("");
     } catch (err) {
       const errorMessage = err.response
@@ -56,32 +63,63 @@ const SignInPage = () => {
         <div className="signin-wrapper">
           <Grid container spacing={2} sx={{ justifyContent: "center" }}>
             <Grid item xs={12} md={6}>
-              <Box sx={{ display: { xs: "none", md: "block" } }}>
-                <Lottie animationData={loginAnimation} style={{ height: "500px" }} />
+              <Box
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100%", // Ensures the Box takes up full height of the grid item
+                }}
+              >
+                <img
+                  src="./frgtpass.svg"
+                  height={450}
+                  width={400}
+                  alt="Reset your Password"
+                />
               </Box>
             </Grid>
-            <Grid item xs={12} md={6} className="signin-form-container">
+            <Grid
+              item
+              xs={12}
+              md={6}
+              className="signin-form-container"
+              sx={{ maxWidth: "500px", width: "100%" }} // Adjust form width here
+            >
               <form onSubmit={handleSubmit}>
                 <Typography variant="h5" align="center" gutterBottom>
-                  Sign In
+                  Reset Password
                 </Typography>
                 <input
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="input-field"
+                  style={{ width: "100%" }} // Ensure input fields also take full width
                 />
-                <Box sx={{ position: "relative", display: "flex", alignItems: "center" }}>
+                <Box
+                  sx={{
+                    position: "relative",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
                   <input
-                    placeholder="Password"
+                    placeholder="New Password"
                     type={showPassword ? "text" : "password"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
                     className="input-field"
+                    style={{ width: "100%" }} // Ensure input fields also take full width
                   />
                   <IconButton
                     onClick={togglePasswordVisibility}
-                    sx={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)" }}
+                    sx={{
+                      position: "absolute",
+                      right: "10px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                    }}
                   >
                     {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
                   </IconButton>
@@ -98,23 +136,23 @@ const SignInPage = () => {
                   className="register-button"
                   sx={{ mt: 2 }}
                 >
-                  Sign In
+                  Reset Password
                 </Button>
                 <Button
                   variant="contained"
-                  type="button"
+                  type="submit"
                   fullWidth
                   className="register-button"
-                  onClick={() => {
-                    navigate("/forgot-password");
-                  }}
                   sx={{ mt: 2 }}
+                  onClick={() => {
+                    navigate("/login");
+                  }}
                 >
-                  Forgot Password
+                  Login
                 </Button>
-                <Typography align="center" sx={{ mt: 2 }}>
-                  Don't have an account? <a href="/register">Register here</a>
-                </Typography>
+                {/* <Typography align="center" sx={{ mt: 2 }}>
+                  <a href="/login">Login here</a>
+                </Typography> */}
               </form>
             </Grid>
           </Grid>
@@ -124,4 +162,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default ForgotPassword;
