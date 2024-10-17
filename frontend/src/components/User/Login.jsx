@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Container,
@@ -23,8 +23,19 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import "../../styles/Login.css"; 
+import '../../styles/preloaderStyle.css'; 
 
 const SignInPage = () => {
+  useEffect(()=>{
+    let preloader = document.querySelector("div #preloader");
+
+    window.addEventListener("load",function(e){
+
+      preloader.style.display = "none";
+
+    });
+  },[]);
+
   const URL = process.env.REACT_APP_API_URL;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -74,6 +85,18 @@ const SignInPage = () => {
 
   return (
     <>
+    <div id="preloader">
+        < div class="wrapper">
+          <div class="box-wrap">
+              <div class="box one"></div>
+              <div class="box two"></div>
+              <div class="box three"></div>
+              <div class="box four"></div>
+              <div class="box five"></div>
+              <div class="box six"></div>
+          </div>
+        </div>
+      </div>
       <Container maxWidth="xl" sx={{ height: "100vh", display: "flex", alignItems: "center" }}>
         <Toaster />
         <Grid container sx={{ height: "100%" }}>
