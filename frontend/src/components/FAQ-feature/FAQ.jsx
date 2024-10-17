@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../styles/FAQ.css'; // Import your CSS
+import '../../styles/preloaderStyle.css'; 
 
 const FAQs = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -32,7 +33,20 @@ const FAQs = () => {
     };
 
     return (
+        
         <div className="faq-page">
+            <div id="preloader">
+                < div class="wrapper">
+                    <div class="box-wrap">
+                        <div class="box one"></div>
+                        <div class="box two"></div>
+                        <div class="box three"></div>
+                        <div class="box four"></div>
+                        <div class="box five"></div>
+                        <div class="box six"></div>
+                    </div>
+                </div>
+            </div>
             <div className="background-blur"></div>
             <header style={{backgroundColor:"red"}}></header>
 
