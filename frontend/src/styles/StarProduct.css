@@ -1,30 +1,41 @@
 .starProduct {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Create 2 equal columns */
-  gap: 1vmax; /* Space between images */
-  width: 80%; /* Adjust the width to fit properly in the layout */
-  margin: 2vmax auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 1vmax auto;
+  flex-wrap: wrap;
+  margin: 0px auto;
+}
+
+.starProduct > div:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  width: 40.5%;
 }
 
 .starProduct img {
-  width: 100%; /* Ensure the images take up the full grid column width */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover;
   transition: all 0.5s;
-  border-radius: 8px; /* Optional: Adds rounded corners */
 }
 
 .starProduct img:hover {
   box-shadow: 6px 6px 15px rgba(53, 53, 53, 0.363);
 }
-
 @media screen and (max-width: 600px) {
   .starProduct {
-    grid-template-columns: 1fr; /* On smaller screens, stack images in one column */
+    flex-direction: column;
   }
 
-  .starProduct img {
-    width: 100%;
-    margin-bottom: 2vmax;
+  .starProduct > div:first-child img {
+    height: auto;
+    width: 80vw;
+    margin: 5% 0;
+  }
+  .starProduct > div:nth-child(2) img {
+    width: 80vw;
+    height: auto;
+    position: relative;
+    right: 25vw;
+    margin: 5% 0;
   }
 }
