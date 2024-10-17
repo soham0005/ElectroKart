@@ -105,7 +105,7 @@ const handleRating = (value) => {
         <div>
           <div className='subscribe-input'>
             <input type="email" name="email" value={email} placeholder="Enter Email Address" onChange={(e) => setEmail(e.target.value)} />
-            <button onClick={handleSubmit}>{loading ? "Subscribing..." : "Subscribe"}</button>
+            <button id='sub' onClick={handleSubmit}>{loading ? "Subscribing..." : "Subscribe"}</button>
           </div>
           <span>Thanks. You're on our email list for special offers.</span>
           <ToastContainer />
