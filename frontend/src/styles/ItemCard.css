@@ -3,12 +3,12 @@
     flex-direction: column;
     align-items: center; 
     background-color: white;
-    width: 30%; /* Adjust width slightly */
-    margin: 1vmax; /* Increase margin for better spacing between cards */
+    width: 30%; 
+    margin: 1vmax; 
     transition: all 0.5s;
     cursor: pointer;
-    border-radius: 8px; /* Optional: Add rounded corners */
-    position: relative; /* Added for positioning the heart icon */
+    border-radius: 8px; 
+    position: relative; 
 }
 
 .ItemCard:hover {
@@ -36,13 +36,14 @@
 /* Wishlist icon styling */
 .wishlist-icon {
     position: absolute;
-    top: 10px;  /* Position near the top */
-    right: 10px; /* Align to the right side */
-    font-size: 22px; /* Icon size */
-    cursor: pointer; /* Pointer cursor */
+    top: 10px;  
+    right: 10px;
+    font-size: 22px; 
+    cursor: pointer; 
     transition: color 0.3s ease;
 }
 
 .wishlist-icon:hover {
-    color: red; /* Color change on hover */
+    color: red; 
 }
+

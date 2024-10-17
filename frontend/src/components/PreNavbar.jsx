@@ -6,6 +6,7 @@ import { AiOutlineClose, AiOutlineHeart } from "react-icons/ai";
 import "@fontsource/montserrat";
 import { Link, useLocation } from "react-router-dom";
 
+
 const PreNavbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isLoggedin, setIsLoggedin] = useState(false);
@@ -73,7 +74,6 @@ const PreNavbar = () => {
           ) : (
             ""
           )}
-
           <MobileMenuIcon onClick={toggleSidebar}>
             <FiMenu />
           </MobileMenuIcon>
