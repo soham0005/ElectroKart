@@ -57,7 +57,7 @@ const Banner = ({ banner }) => {
                         <h3>{item.name}</h3>
                         <p>{item.description}</p>
                         <p>{item.source}</p>
-                        <u>Read more</u>
+                        <u><a href="/" className="text-white">Read more</a></u>
                     </Carousel.Caption>
                 </Carousel.Item>
             ))}

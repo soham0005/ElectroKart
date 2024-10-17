@@ -1,0 +1,126 @@
+name: CI/CD Workflow for ElectroKart ⚡
+
+on:
+  push:
+    branches:
+      - main
+      - "feature/**"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # Job 1: Set up Node.js and run tests
+  test:
+    name: Run Tests and Linting
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x] # Testing on multiple Node versions
+    steps:
+      # Checkout repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # Install dependencies (Frontend)
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      # Install dependencies (Backend)
+      - name: Install Backend Dependencies
+        working-directory: ./backend
+        run: npm install
+
+      # Lint the frontend code
+      - name: Lint Frontend Code
+        working-directory: ./frontend
+        run: npm run lint
+
+      # Lint the backend code
+      - name: Lint Backend Code
+        working-directory: ./backend
+        run: npm run lint
+
+      # Run frontend tests
+      - name: Run Frontend Tests
+        working-directory: ./frontend
+        run: npm run test -- --coverage
+
+      # Run backend tests
+      - name: Run Backend Tests
+        working-directory: ./backend
+        run: npm run test -- --coverage
+
+  # Job 2: Build the frontend app
+  build:
+    name: Build and Test Frontend
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      - name: Build Frontend
+        working-directory: ./frontend
+        run: npm run build
+
+  # Job 3: Deploy to Production (only on main branch push)
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' # Only deploy on main branch
+    needs: build
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Install Backend Dependencies for Deployment
+      - name: Install Backend Dependencies
+        working-directory: ./backend
+        run: npm install --production
+
+      # Install Frontend Dependencies for Deployment
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: npm install --production
+
+      # Deploy Backend (Node.js server)
+      - name: Deploy Backend to Server
+        run: |
+          ssh user@your-server-ip 'cd /path/to/backend && git pull && npm install --production && pm2 restart backend-app'
+
+      # Deploy Frontend (React build)
+      - name: Deploy Frontend to Server
+        run: |
+          scp -r ./frontend/build/* user@your-server-ip:/path/to/frontend/public
+
+  # Job 4: Notify Success via Slack (Optional)
+  notify:
+    name: Notify Slack on Deployment
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && success()
+    steps:
+      - name: Send Slack Notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name: 'ElectroKart CI/CD'
+          fields: repo,message,commit,author,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

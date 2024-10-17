@@ -1,60 +1,118 @@
-.nav{
+.nav {
     z-index: 1000;
     background-color: white;
     padding: 1vmax;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(43, 43, 43, 0.137);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease;
 }
 
-.navlinks{
+.nav:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.navlinks-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-grow: 1;
+}
+
+.navlinks {
     color: rgb(59, 59, 59);
     text-decoration: none;
     margin: 1vmax 1.2vmax;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
     font-size: 1.1vmax;
+    transition: color 0.3s ease;
 }
 
-.logo{
+.navlinks:hover {
+    color: rgb(0, 125, 235);
+    text-decoration: underline;
+}
+
+.logo {
     width: 58px;
-    border-radius: 20px;
-    overflow: hidden;
     cursor: pointer;
-    position: relative;
-    right: 2vmax;
 }
 
-#imgLogo{
+#imgLogo {
     height: 65px;
     object-fit: contain;
 }
 
-.searchbox{
+.searchbox {
     position: relative;
-    left: 4vmax;
-    bottom: 0.8vmax;
+    display: flex;
+    align-items: center;
 }
 
-.searchbox > input{
+.searchbox > form {
+    display: flex;
+    align-items: center;
+}
+
+.searchbox > input {
     border: none;
     border-bottom: 1px solid rgba(128, 128, 128, 0.76);
     width: 15vmax;
     font-size: 1.1vmax;
     outline: none;
-    color:rgb(61, 61, 61);
-    font-weight: 100;   
-}
-.searchbox > svg{
-    fill: rgb(61, 61, 61);
-}
-#searchBox{
-    height: 40px;
+    color: rgb(61, 61, 61);
+    font-weight: 100;
+    padding: 0.5vmax;
+    transition: border-color 0.3s ease;
 }
 
-.navlinks:hover{
-    text-decoration: none;
-    color: rgb(0, 125, 235);
+.searchbox > input:focus {
+    border-bottom: 1px solid rgb(0, 125, 235);
+}
+
+.searchbox > button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding-left: 0.5vmax;
+}
+
+#searchBox {
+    fill: rgb(61, 61, 61);
+    transition: fill 0.3s ease;
+}
+
+.searchbox > button:hover #searchBox {
+    fill: rgb(0, 125, 235);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navlinks-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .searchbox {
+        width: 100%;
+        margin-top: 1vmax;
+    }
+
+    .searchbox > input {
+        width: 90%;
+    }
 }
