@@ -15,5 +15,11 @@
     margin-bottom: 20px;
   }
   
+  .wishlist-count {
+    font-size: 16px;
+    color: rgb(29, 169, 185);
+    margin-top: 10px;
+    text-align: center;
+  }
   
   
