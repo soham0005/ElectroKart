@@ -7,10 +7,22 @@ const authRoutes = require('./routes/authRoute.js')
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
+const nodemailer = require('nodemailer')
 
 // Load environment variables
 dotenv.config();
+
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    type: 'OAuth2',
+    user: process.env.email,
+    pass: process.env.password,
+    clientId: process.env.OAUTH_CLIENTID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    refreshToken: process.env.OAUTH_REFRESH_TOKEN
+  }
+});
 
 // Connect to MongoDB
 connectDB();
@@ -28,6 +40,19 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
+
+//Otp Schema for verifying opt
+const otpSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  otp: { type: String, required: true },
+  createdAt: { 
+    type: Date, 
+    default: Date.now, 
+    expires: 600 // 600 seconds = 10 minutes
+  }
+});
+
+const Otpdata = mongoose.model('otp', otpSchema)
 
 // Product schema and model (move to separate model file)
 const productSchema = new mongoose.Schema({
@@ -87,12 +112,62 @@ app.post('/api/auth/login', async (req, res) => {
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user._id }, `${process.env.JWT_SECRET}`, { expiresIn: '1h' });
     res.json({ token });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
+app.post('/api/auth/login/otp'  , async (req, res) => {
+  const { email} = req.body;
+  try {
+    const user = await User.findOne({ email });
+    const existing_user_otp = await Otpdata.findOne({email})
+
+    if (!user) {
+      return res.status(401).json({ message: 'User not registered' });
+    }
+    
+    const otp = Math.floor(100000 + Math.random() * 900000);
+    
+    const mailOptions = {
+      from: `"Electrokart" ${process.env.email}`, 
+      to: email, // list of receivers
+      subject: 'Electrokart Login OTP', 
+      text: `Your OTP to login to Electrokart is: ${otp}`, 
+    };
+
+    if (existing_user_otp) { 
+      await Otpdata.deleteOne({ email });
+    }
+    let info = await transporter.sendMail(mailOptions);
+     console.log('Email sent: ' + info.response);
+    const newotp = await  Otpdata.create({otp:otp, email:email})
+    res.status(201).json({ message: 'Otp successfully sended', newotp });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+
+}) ;
+
+app.post('/api/auth/login/otp/verify', async (req, res) => {
+  
+  const { otp, email } = req.body;
+  try {
+    const user = await Otpdata.findOne({otp});
+    const Userid = await User.findOne({email}); 
+    if (!user ||  user.email !== email ) {
+      return res.status(401).json({ message: 'Invalid OTP' });
+    }
+
+    const token = jwt.sign({ id: Userid._id }, `${process.env.JWT_SECRET}`, { expiresIn: '1h' });
+    await Otpdata.deleteOne({ otp });
+    res.status(201).json({ message: 'Otp successfully verified', token });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+})
 
 // Product routes
 app.post('/api/products', authMiddleware, async (req, res) => {
