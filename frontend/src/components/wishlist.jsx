@@ -20,8 +20,12 @@ const Wishlist = () => {
   return (
     <div className="Wishlist">
       <h1>Your Wishlist</h1>
+      <p className="wishlist-count">
+        {wishlistItems.length} item{wishlistItems.length !== 1 ? "s" : ""} in
+        your list
+      </p>
       {wishlistItems.length === 0 ? (
-        <p>Your wishlist is empty.</p>
+        <p>oops nothing to show!</p>
       ) : (
         <div className="wishlist-items">
           {wishlistItems.map((item, index) => (
