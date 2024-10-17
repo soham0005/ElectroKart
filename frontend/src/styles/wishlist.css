@@ -1,0 +1,19 @@
+/* Wishlist.css */
+.Wishlist {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .wishlist-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Add space between items */
+  }
+  
+  .Wishlist h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  
+  
