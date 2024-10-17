@@ -43,8 +43,8 @@ const User = mongoose.model('User', userSchema);
 
 //Otp Schema for verifying opt
 const otpSchema = new mongoose.Schema({
-  otp: { type: String, required: true },
   email: { type: String, required: true, unique: true },
+  otp: { type: String, required: true },
   createdAt: { 
     type: Date, 
     default: Date.now, 
@@ -112,7 +112,7 @@ app.post('/api/auth/login', async (req, res) => {
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user._id }, `${process.env.JWT_SECRET}`, { expiresIn: '1h' });
     res.json({ token });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -123,10 +123,12 @@ app.post('/api/auth/login/otp'  , async (req, res) => {
   const { email} = req.body;
   try {
     const user = await User.findOne({ email });
+    const existing_user_otp = await Otpdata.findOne({email})
+
     if (!user) {
       return res.status(401).json({ message: 'User not registered' });
     }
-
+    
     const otp = Math.floor(100000 + Math.random() * 900000);
     
     const mailOptions = {
@@ -136,6 +138,9 @@ app.post('/api/auth/login/otp'  , async (req, res) => {
       text: `Your OTP to login to Electrokart is: ${otp}`, 
     };
 
+    if (existing_user_otp) { 
+      await Otpdata.deleteOne({ email });
+    }
     let info = await transporter.sendMail(mailOptions);
      console.log('Email sent: ' + info.response);
     const newotp = await  Otpdata.create({otp:otp, email:email})
@@ -143,6 +148,7 @@ app.post('/api/auth/login/otp'  , async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+
 }) ;
 
 app.post('/api/auth/login/otp/verify', async (req, res) => {
@@ -155,7 +161,7 @@ app.post('/api/auth/login/otp/verify', async (req, res) => {
       return res.status(401).json({ message: 'Invalid OTP' });
     }
 
-    const token = jwt.sign({ id: Userid._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: Userid._id }, `${process.env.JWT_SECRET}`, { expiresIn: '1h' });
     await Otpdata.deleteOne({ otp });
     res.status(201).json({ message: 'Otp successfully verified', token });
   } catch (error) {
