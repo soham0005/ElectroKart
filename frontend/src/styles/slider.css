@@ -21,3 +21,14 @@
 .carousel .carousel-indicators .active {
     opacity: 1;
 }
+.carousel .carousel-indicators button {
+    width:750px;
+    height: 3px;
+    background-color: white;
+    opacity: 0.4;
+    margin:10px;
+    border: none;
+}
+.carousel .carousel-indicators .active {
+    opacity: 1; 
+}
