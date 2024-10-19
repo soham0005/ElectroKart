@@ -191,11 +191,9 @@ const SignInPage = () => {
                 </Button>
                 <Typography align="center" sx={{ mt: 2 }}>
                   Don't have an account? <a href="/register">Register here</a>
+                  <Divider sx={{ my: 3 }}>or sign in with</Divider>
                 </Typography>
 
-                <Divider sx={{ my: 3 }}>or sign in with</Divider>
-
-                
                 <Grid container spacing={2} justifyContent="center">
                   <Grid item>
                     <Button
