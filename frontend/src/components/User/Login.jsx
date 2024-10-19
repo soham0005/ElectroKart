@@ -55,11 +55,7 @@ const SignInPage = () => {
     setLoading(true);
 
     try {
-
-      const response = await axios.post("http://localhost:3000/login", {
-
       const response = await axios.post(`${URL}/api/v1/auth/login`, {
-
         email,
         password,
       });
