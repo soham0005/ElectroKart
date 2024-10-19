@@ -11,18 +11,7 @@ import FAQs from "./FAQ-feature/FAQ.jsx";
 import SignInPage from "./User/Login.jsx";
 import SignupForm from "./User/Signup.jsx";
 import ForgotPassword from "./User/ForgotPassword.jsx";
-
-import Home from './Home.jsx';
-import FAQs from './FAQ-feature/FAQ.jsx';
-import SignInPage from './User/Login.jsx';
-import SignupForm from './User/Signup.jsx';
 import Page404 from './page404.jsx';
-
-import Home from "./Home.jsx";
-import FAQs from "./FAQ-feature/FAQ.jsx";
-import SignInPage from "./User/Login.jsx";
-import SignupForm from "./User/Signup.jsx";
-import Page404 from "./page404.jsx";
 import Wishlist from "./wishlist.jsx";
 
 
