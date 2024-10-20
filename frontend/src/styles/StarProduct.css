@@ -1,11 +1,10 @@
 .starProduct {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 40px;
-  margin: 1vmax auto;
+  display: flex;
   flex-wrap: wrap;
-  margin: 0px auto;
+  gap: 40px;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .starProduct > div:last-child {

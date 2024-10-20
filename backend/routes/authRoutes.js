@@ -9,34 +9,34 @@ const {
 
 const { requireSignIn, isAdmin } = require("../middlewares/authMiddleware.js");
 
-//router object
-const router = express.Router();
+//authRouter object
+const authRouter = express.Router();
 
 //routing
 
 //REGISTER || METHOD POST
-router.post("/register", registerController);
+authRouter.post("/auth/register", registerController);
 
 //LOGIN || POST
-router.post("/login", loginController);
+authRouter.post("/auth/login", loginController);
 
 //test routes
-router.get("/test", requireSignIn, isAdmin, testController);
+authRouter.get("/test", requireSignIn, isAdmin, testController);
 
 //protected route user
-router.get("/user-auth", requireSignIn, (req, res) => {
+authRouter.get("/user-auth", requireSignIn, (req, res) => {
   res.status(200).send({ ok: true });
 });
 
 //protected route admin
-router.get("/admin-auth", requireSignIn, isAdmin, (req, res) => {
+authRouter.get("/admin-auth", requireSignIn, isAdmin, (req, res) => {
   res.status(200).send({ ok: true });
 });
 
 //forgot Password
-router.post('/forgot-password', forgotPasswordController);
+authRouter.post('/forgot-password', forgotPasswordController);
 
 //update profile
-router.put('/profile',requireSignIn, updateProfileController);
+authRouter.put('/profile',requireSignIn, updateProfileController);
 
-module.exports = router;
+module.exports = authRouter;

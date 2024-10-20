@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <div>
-      <div id="preloader">
+      {/* <div id="preloader">
         < div class="wrapper">
           <div class="box-wrap">
               <div class="box one"></div>
@@ -39,7 +39,7 @@ const Home = () => {
               <div class="box six"></div>
           </div>
         </div>
-      </div>
+      </div> */}
     <Slider start={data.banner.start} />
       <Offers offer = {data.offer} />
       <Heading text={"FEATURED"}/>
