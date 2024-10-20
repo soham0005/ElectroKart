@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useState, useEffect } from "react";
 import {
   Box,
@@ -55,7 +55,7 @@ const SignInPage = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(`${URL}/api/v1/auth/login`, {
+      const response = await axios.post(`${URL}/api/auth/login`, {
         email,
         password,
       });
@@ -85,8 +85,8 @@ const SignInPage = () => {
 
   return (
     <>
-    <div id="preloader">
-        < div class="wrapper">
+    {/* <div id="preloader">
+        <div class="wrapper">
           <div class="box-wrap">
               <div class="box one"></div>
               <div class="box two"></div>
@@ -96,7 +96,7 @@ const SignInPage = () => {
               <div class="box six"></div>
           </div>
         </div>
-      </div>
+      </div> */}
       <Container maxWidth="xl" sx={{ height: "100vh", display: "flex", alignItems: "center" }}>
         <Toaster />
         <Grid container sx={{ height: "100%" }}>
@@ -211,7 +211,6 @@ const SignInPage = () => {
                   <a href="/register" className="link">
                     Register here
                   </a>
-
                 </Typography>
               </form>
             </Box>
