@@ -119,16 +119,77 @@ cd backend
 npm install
 node index.js
 MONGO_URL = ""
+email = ""
+password = ""
+OAUTH_CLIENTID  = ""
+OAUTH_CLIENT_SECRET  = ""
+OAUTH_REFRESH_TOKEN = ""
 # Paste your MongoDB URL here for local testing
 ```
 
-### 4.Start the application:
+### 4. How to get Oauth Credentials
+
+#### Step 1: Create a Project in Google Cloud Console
+1. Go to [Google Cloud Console](https://console.cloud.google.com/).
+2. Click on **Create Project**.
+3. Enter a project name (e.g., "Nodemailer Setup") and click **Create**.
+4. Once created, select your project from the project dropdown menu in the top-left corner.
+
+#### Step 2: Enable Gmail API
+
+1. In the Google Cloud Console, navigate to **APIs & Services > Library**.
+2. Search for **Gmail API** in the search bar.
+3. Click on **Enable** to activate the Gmail API for your project.
+
+#### Step 3: Configure OAuth Consent Screen
+
+1. Navigate to **APIs & Services > OAuth Consent Screen**.
+2. Under **User Type**, choose **External** (this is the only option if you're not part of G-Suite).
+3. Fill in the required fields:
+    - **App Name**: Choose a name for your app.
+    - **User Support Email**: Enter your email.
+    - **Developer Contact Information**: Enter your email again.
+4. Click **Save and Continue**.
+5. On the Scopes page, click **Save and Continue** (you can skip adding scopes for now).
+6. On the Test Users page, add your own email address as a test user. Click **Save and Continue**.
+7. It is important to add the test users as these will actually allow to send mail from the emails you are using.
+
+#### Step 4: Create OAuth Credentials
+
+1. Go to the **Credentials** tab in the sidebar.
+2. Click the **+ Create Credentials** button and select **OAuth Client ID**. 
+3. Choose **Web Application** as the application type.
+4. Under **Authorized redirect URIs**, add the following URL:
+```bash
+https://developers.google.com/oauthplayground
+```
+5. Click **Create**. You will now see your **Client ID** and **Client Secret**. Save these as you will need them later.
+6. Note: These will act as your Oauth_Client_Id and Oauth_Client_secret.
+
+#### Step 5: Generate a Refresh Token
+
+1. Go to [OAuth 2.0 Playground](https://developers.google.com/oauthplayground).
+2. In the top-right corner, click the **Settings** icon.
+3. Check the box labeled **Use your own OAuth credentials**.
+4. Enter your **Client ID** and **Client Secret** obtained in Step 4. 
+5. In the OAuth Playground, under **Select & Authorize APIs**, search for **Gmail API v1**.
+6. Select the following scope:
+```bash
+https://mail.google.com/
+```
+
+7. Click **Authorize APIs** and sign in with your Google account.
+8. After authorization, click **Exchange authorization code for tokens**.
+9. Copy the **Refresh Token** from the output and paste it in OAUTH_REFRESH_TOKEN.
+
+
+### 5.Start the application:
 
 ```bash
 npm start
 ```
 
-## 5. Usage
+## 6. Usage
 
 Once you have set up the project, you can:
 
@@ -136,7 +197,7 @@ Once you have set up the project, you can:
 - Explore app features: Browse products, add items to the cart, and proceed to checkout.
 - Test with sample data: Use provided sample data or mock APIs for testing the functionality.
 
-## 6. Contributing 🤝
+## 7. Contributing 🤝
 
 We welcome contributions from everyone! If you would like to contribute to ElectroKart, please follow these steps:
 
@@ -149,7 +210,7 @@ We welcome contributions from everyone! If you would like to contribute to Elect
 
 For more detailed guidelines, please refer to our [full Contributing.md](https://github.com/soham0005/ElectroKart/blob/master/contributing.md).
 
-## 7. Pull Request Review Criteria 🧲
+## 8. Pull Request Review Criteria 🧲
 
 1. Please fill out the PR template properly when creating a pull request.
 2. Assign yourself to the issue you’re working on to help us track progress.
@@ -162,7 +223,7 @@ For more detailed guidelines, please refer to our [full Contributing.md](https:/
 npm run test
 ```
 
-## 8. Code of Conduct 😇
+## 9. Code of Conduct 😇
 
 We strive to create a welcoming and inclusive environment for all contributors and users. By participating in this project, you agree to abide by our Code of Conduct.
 
