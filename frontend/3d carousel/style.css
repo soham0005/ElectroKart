@@ -1,0 +1,168 @@
+/* Body Styling */
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  background: #1a1a1a;
+  overflow: hidden;
+  color: #fff; /* Text color for better visibility */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Carousel Wrapper for containing image-container and buttons */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Image Container with 3D Rotation */
+.image-container {
+  position: relative;
+  width: 300px; /* Increased width */
+  height: 450px; /* Increased height */
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(0deg);
+  transition: transform 0.7s ease-in-out; /* Smooth rotation animation */
+  animation: infiniteRotation 20s infinite linear; /* Slower infinite loop for banner rotation */
+}
+
+/* Image Span with Rotation */
+.image-container span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: rotateY(calc(var(--i) * 45deg)) translateZ(390px); /* Reduced depth for better centering */
+  transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out; /* Smooth transitions */
+}
+
+.image-container span img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Shadow for a floating effect */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Hover Animation for Image */
+.image-container:hover {
+  transform: perspective(1000px) rotateY(360deg); /* Full 360 rotation on hover */
+}
+
+.image-container:hover span img {
+  transform: scale(1.05); /* Slightly enlarge the image on hover */
+}
+
+/* Button Container */
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-top: 20px;
+  position: relative;
+}
+
+/* Button Styling */
+.btn {
+  background: crimson;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease-in-out, transform 0.3s ease;
+}
+
+/* Button Hover Effect */
+.btn:hover {
+  filter: brightness(1.5);
+  transform: scale(1.1); /* Slightly enlarge the button on hover */
+  background: #ff4444; /* Change color on hover */
+}
+
+/* Button Entry Animation */
+.btn-container .btn {
+  animation: slideIn 0.8s ease forwards;
+}
+
+#prev {
+  animation-delay: 0.2s;
+}
+
+#next {
+  animation-delay: 0.4s;
+}
+
+/* Slide In Animation for Buttons */
+@keyframes slideIn {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for Infinite Rotation of the Images */
+@keyframes infiniteRotation {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg);
+  }
+}
+
+/* Styling for the Previous and Next Buttons */
+.prev-btn, .next-btn {
+  position: absolute;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(76, 200, 93);
+  border: none;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translateY(-50%);
+  font-size: 18px;
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+/* Hover Effect for Previous and Next Buttons */
+.prev-btn:hover, .next-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.2); /* Enlarge the button slightly on hover */
+}
+
+/* Button Animation on Load */
+.prev-btn, .next-btn {
+  animation: slideIn 0.8s ease forwards;
+}
+
+.prev-btn {
+  animation-delay: 0.2s;
+}
+
+.next-btn {
+  animation-delay: 0.4s;
+}
