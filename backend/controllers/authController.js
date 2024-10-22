@@ -1,6 +1,8 @@
+const {Otpdata} = require("../models/otpModel.js")
 const userModel = require("../models/userModel.js");
 const JWT = require('jsonwebtoken');
 const { comparePassword, hashPassword } = require("../helpers/authHelper.js");
+const nodemailer = require("nodemailer")
 
 
  const registerController = async (req, res) => {
@@ -115,6 +117,48 @@ const { comparePassword, hashPassword } = require("../helpers/authHelper.js");
   };
 
   //test controller
+
+  const otpController = async (req,res) => {
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: process.env.email,
+        clientId: process.env.OAUTH_CLIENTID,
+        clientSecret: process.env.OAUTH_CLIENT_SECRET,
+        refreshToken: process.env.OAUTH_REFRESH_TOKEN 
+      }
+    });
+    const { email} = req.body;
+    try {
+      const user = await userModel.findOne({ email });
+      const existing_user_otp = await Otpdata.findOne({email})
+  
+      if (!user) {
+        return res.status(401).json({ message: 'User not registered' });
+      }
+      
+      const otp = Math.floor(100000 + Math.random() * 900000);
+      const mailOptions = {
+        from: `"Electrokart" ${process.env.email}`, 
+        to: email, // list of receivers
+        subject: 'Electrokart Login OTP', 
+        text: `Your OTP to login to Electrokart is: ${otp}`, 
+      };
+  
+      if (existing_user_otp) { 
+        await Otpdata.deleteOne({ email });
+      }
+      let info = await transporter.sendMail(mailOptions);
+       console.log('Email sent: ' + info.response);
+      const newotp = await  Otpdata.create({otp:otp, email:email})
+      res.status(201).json({ message: 'Otp successfully sended', newotp });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+
  const testController = (req, res) => {
     try {
       res.send("Protected Route");
@@ -124,6 +168,22 @@ const { comparePassword, hashPassword } = require("../helpers/authHelper.js");
     }
   };
 
+  const otpVerifyController = async (req, res) => {
+    const { otp, email } = req.body;
+    try {
+      const user = await Otpdata.findOne({otp});
+      const Userid = await userModel.findOne({email}); 
+      if (!user ||  user.email !== email ) {
+        return res.status(401).json({ message: 'Invalid OTP' });
+      }
+  
+      const token = JWT.sign({ id: Userid._id }, `${process.env.JWT_SECRET}`, { expiresIn: '1h' });
+      await Otpdata.deleteOne({ otp });
+      res.status(201).json({ message: 'Otp successfully verified', token });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
 
   //forgotPasswordController
  const forgotPasswordController = async (req, res) => {
@@ -200,5 +260,7 @@ const { comparePassword, hashPassword } = require("../helpers/authHelper.js");
     loginController,
     testController,
     forgotPasswordController,
-    updateProfileController
+    updateProfileController,
+    otpController,
+    otpVerifyController,
   };
