@@ -26,7 +26,7 @@
   transition: transform 0.2s ease-in-out; /* Controls the transition speed and smoothness */
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 476px) {
   .carousel .carousel-inner .carousel-item img {
     width: 100%; /* Ensure the image fills the entire width on small screens */
     height: 260px; /* Set a fixed height for better display on mobile */
