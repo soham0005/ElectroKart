@@ -1,27 +1,44 @@
 .carousel .carousel-inner .carousel-item img {
-    width: 100%; /* Ensure the image fills the entire width of the carousel */
-    height: auto; /* Maintain the aspect ratio */
-    object-fit: cover; /* Ensure images fit nicely without stretching */
-    border-radius: 8px; /* Optional: Adds rounded corners to the images */
+  width: 100%; /* Ensure the image fills the entire width of the carousel */
+  height: auto; /* Maintain the aspect ratio */
+  object-fit: cover; /* Ensure images fit nicely without stretching */
+  border-radius: 8px; /* Optional: Adds rounded corners to the images */
 }
 
 .carousel .carousel-inner .carousel-item {
-    transition: transform 0.5s ease-in-out; /* Smoothen the transition effect */
+  transition: transform 0.5s ease-in-out; /* Smoothen the transition effect */
 }
 
 .carousel .carousel-indicators button {
-    width: 50px; /* Reduce the width for better visibility */
-    height: 3px;
-    background-color: white;
-    opacity: 0.6;
-    margin: 10px;
-    border: none;
+  width: 50px; /* Reduce the width for better visibility */
+  height: 3px;
+  background-color: white;
+  opacity: 0.6;
+  margin: 10px;
+  border: none;
 }
 
 .carousel .carousel-indicators .active {
-    opacity: 1;
+  opacity: 1;
 }
 
 .carousel .carousel-inner .carousel-item {
-    transition: transform 0.2s ease-in-out; /* Controls the transition speed and smoothness */
+  transition: transform 0.2s ease-in-out; /* Controls the transition speed and smoothness */
+}
+
+@media screen and (max-width: 576px) {
+  .carousel .carousel-inner .carousel-item img {
+    width: 100%; /* Ensure the image fills the entire width on small screens */
+    height: 260px; /* Set a fixed height for better display on mobile */
+    object-fit: cover; /* Ensure images maintain aspect ratio without distortion */
+    border-radius: 4px; /* Reduce the border radius for smaller screens */
+  }
+
+  .carousel .carousel-control-prev .visually-hidden {
+    display: none;
+  }
+
+  .carousel .carousel-control-next .visually-hidden {
+    display: none;
+  }
 }
