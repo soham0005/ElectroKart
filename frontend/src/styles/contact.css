@@ -122,7 +122,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .contact__container {
     grid-template-columns: 1fr; /* Stack on smaller screens */
     gap: 1.6rem;
