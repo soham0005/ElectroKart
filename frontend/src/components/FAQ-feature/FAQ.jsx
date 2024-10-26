@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/FAQ.css'; // Import your CSS
 import '../../styles/preloaderStyle.css'; 
 
 const FAQs = () => {
     const [activeIndex, setActiveIndex] = useState(null);
     const [searchQuery, setSearchQuery] = useState(''); // Add state for search query
+    const [isLoading, setIsLoading] = useState(true);
 
     const faqs = [
         { question: "What warranty does Xiaomi offer on its products?", answer: "Xiaomi typically offers a one-year warranty on most of its devices. However, warranty terms may vary depending on the product and region, so it’s best to check the specific warranty policy for your item." },
@@ -32,10 +33,18 @@ const FAQs = () => {
         setActiveIndex(activeIndex === index ? null : index);
     };
 
+    useEffect(()=>{
+        setTimeout(()=>{
+            setIsLoading(false);
+        }, 2000);
+    },[]);
+
     return (
         
         <div className="faq-page">
-            <div id="preloader">
+            <div id="preloader" style={{
+                display: isLoading ? "block" : "none"
+            }} >
                 < div class="wrapper">
                     <div class="box-wrap">
                         <div class="box one"></div>
