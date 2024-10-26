@@ -26,6 +26,16 @@
 
 <br />
 
+## Statistics 📊  
+
+| Statistic               | Count | Link                             |  
+|-------------------------|-------|----------------------------------|  
+| ![Stars](https://img.shields.io/github/stars/YOUR_USERNAME/ElectroKart?style=social) | ![Stars Count](https://img.shields.io/badge/stars-1234-yellow) | [View Stars](https://github.com/YOUR_USERNAME/ElectroKart/stargazers) |  
+| ![Forks](https://img.shields.io/github/forks/YOUR_USERNAME/ElectroKart?style=social) | ![Forks Count](https://img.shields.io/badge/forks-5678-blue) | [View Forks](https://github.com/YOUR_USERNAME/ElectroKart/network) |  
+| ![Open Issues](https://img.shields.io/github/issues/YOUR_USERNAME/ElectroKart) | ![Open Issues Count](https://img.shields.io/badge/issues-90-red) | [View Issues](https://github.com/YOUR_USERNAME/ElectroKart/issues) |  
+| ![Open Pull Requests](https://img.shields.io/github/issues-pr/YOUR_USERNAME/ElectroKart) | ![Open PRs Count](https://img.shields.io/badge/pull%20requests-10-orange) | [View PRs](https://github.com/YOUR_USERNAME/ElectroKart/pulls) |  
+| ![Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/YOUR_USERNAME/ElectroKart) | ![Closed PRs Count](https://img.shields.io/badge/closed%20pr-50-green) | [View Closed PRs](https://github.com/YOUR_USERNAME/ElectroKart/pulls?q=is%3Apr+is%3Aclosed) |
+
 ## Table of Contents
 
 1. [Project Overview](#1-project-overview)
