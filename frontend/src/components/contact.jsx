@@ -2,38 +2,54 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify"; // Import toast
 import "../styles/contact.css";
 import "react-toastify/dist/ReactToastify.css";
+import { apiConnector } from "../services/apiConnector";
 
-const Contact = (props) => {
+const Contact = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+    const CONTACT_US_API = process.env.REACT_APP_API_URL + "/contact";
 
-    const [result, setResult] = useState("");
+    // const [result, setResult] = useState("");
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        setResult("Sending....");
-        const formData = new FormData(event.target);
-
-        formData.append("access_key", "b23e94f7-4fa1-42b1-b7a7-845d0227384c");
-
-        const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: formData,
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            setResult("Form Submitted Successfully");
-            toast.success("Sent successfully!"); // Show success message
-            event.target.reset();
-        } else {
-            console.log("Error", data);
-            setResult(data.message);
-            toast.error("Error sending the form. Please try again."); // Show error message
+        if (!name || !email || !message || !subject) {
+            toast.error("Please enter all information");
+            return;
         }
+        console.log("Frontend submit called....")
+        const data = {
+            name: name,
+            email: email,
+            subject: subject,
+            message: message,
+        };
+        console.log(data)
+
+		try {
+			setLoading(true);
+			const res = await apiConnector(
+				"POST",
+				CONTACT_US_API,
+				data
+			);
+			toast.success("Message sent successfully!");
+            console.log("Email Res - ", res);
+            
+		} catch (error) {
+            console.log("ERROR MESSAGE - ", error.message);
+            toast.error("Please try again!");
+			setLoading(false);
+        }
+        setLoading(false);
+        setEmail("");
+        setName("");
+        setMessage("");
+        setSubject("");
+        console.log("called")
     };
 
     return (
@@ -54,6 +70,7 @@ const Contact = (props) => {
                             <input
                                 type="text"
                                 name="name"
+                                value={name}
                                 className="contact__form-input"
                                 placeholder="Insert your name"
                                 onChange={(e) => setName(e.target.value)}
@@ -64,6 +81,7 @@ const Contact = (props) => {
                             <input
                                 type="email"
                                 name="email"
+                                value={email}
                                 className="contact__form-input"
                                 placeholder="Insert your email"
                                 onChange={(e) => setEmail(e.target.value)}
@@ -76,6 +94,7 @@ const Contact = (props) => {
                             type="text"
                             className="contact__form-input"
                             name="subject"
+                            value={subject}
                             placeholder="Insert your subject"
                             onChange={(e) => setSubject(e.target.value)}
                         />
@@ -87,18 +106,19 @@ const Contact = (props) => {
                             id=""
                             cols="30"
                             rows="10"
+                            value={message}
                             className="contact__form-input"
                             placeholder="Write your message"
                             onChange={(e) => setMessage(e.target.value)}
                         ></textarea>
                     </div>
 
-                    <button type="submit" className="btn">
+                    <button disabled={loading} type="submit" className="btn">
                         {"Send Message"}
                     </button>
                 </form>
 
-                <ToastContainer position="bottom-right" theme={props.theme} />
+                <ToastContainer position="top-right"  />
             </div>
         </section>
     );
