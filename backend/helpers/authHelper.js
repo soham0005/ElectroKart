@@ -1,3 +1,4 @@
+const nodemailer = require('nodemailer')
 const bcrypt = require("bcrypt");
 
 const hashPassword = async (password) => {
@@ -10,6 +11,18 @@ const hashPassword = async (password) => {
   }
 };
 
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    type: 'OAuth2',
+    user: process.env.email,
+    pass: process.env.password,
+    clientId: process.env.OAUTH_CLIENTID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    refreshToken: process.env.OAUTH_REFRESH_TOKEN
+  }
+});
+
 const comparePassword = async (password, hashedPassword) => {
   return bcrypt.compare(password, hashedPassword);
 };
@@ -18,4 +31,5 @@ const comparePassword = async (password, hashedPassword) => {
 module.exports = {
   hashPassword,
   comparePassword,
+  transporter
 };

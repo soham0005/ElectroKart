@@ -5,6 +5,8 @@ const {
   testController,
   forgotPasswordController,
   updateProfileController,
+  otpController,
+  otpVerifyController,
 } = require("../controllers/authController.js");
 
 const { requireSignIn, isAdmin } = require("../middlewares/authMiddleware.js");
@@ -20,6 +22,11 @@ authRouter.post("/auth/register", registerController);
 //LOGIN || POST
 authRouter.post("/auth/login", loginController);
 
+//LOGIN || OTP || POST 
+authRouter.post("/auth/login/otp", otpController);
+
+//LOGIN || OTP || Verify || POST 
+authRouter.post("/auth/login/otp/verify", otpVerifyController);
 //test routes
 authRouter.get("/test", requireSignIn, isAdmin, testController);
 
