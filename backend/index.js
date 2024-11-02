@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const orderRoutes = require('./routes/orderRoutes.js')
 const productRoutes = require('./routes/productRoutes.js')
 const bodyParser = require('body-parser');
+const contactRoutes = require("./routes/contactUs.js")
 
 // Load environment variables
 dotenv.config();
@@ -26,6 +27,7 @@ app.get('/hello', async (req, res) => {
 app.use('/api', authRoutes)
 app.use('/api', orderRoutes)
 app.use('/api', productRoutes)
+app.use("/api", contactRoutes);
 // Start the server
 
 const PORT = process.env.PORT || 5000;
