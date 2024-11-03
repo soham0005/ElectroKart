@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import GoogleTranslate from "./GoogleTranslate";
+import { Link } from "react-router-dom";
 
 function Footer({ footer }) {
   const [loading, setLoading] = useState(false);
@@ -99,6 +100,18 @@ function Footer({ footer }) {
               </a>
             ))}
           </div>
+          <Link to="/Contributors">
+            <button
+              style={{
+                backgroundColor: "rgb(26, 26, 46)",
+                color: "white",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Contributors
+            </button>
+          </Link>
         </div>
 
         <div className="footer-section">
@@ -111,6 +124,7 @@ function Footer({ footer }) {
           >
             Contact Us
           </h3>
+
           <div
             style={{
               display: "flex",
