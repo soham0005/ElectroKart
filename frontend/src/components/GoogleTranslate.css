@@ -1,0 +1,84 @@
+.google-translate-container {
+  padding-left: 20px;
+}
+
+@media (min-width: 768px) {
+  .google-translate-container {
+    padding-left: 0;
+  }
+}
+
+.goog-te-combo {
+  display: inline-block;
+  background-color: white; /* White background */
+  border: 3px solid #023197; /* Red border */
+  border-radius: 0.5rem; /* Slightly more rounded */
+  padding: 0.5rem 1rem; /* Tailwind: p-2 */
+  font-size: 0.875rem; /* Tailwind: text-sm */
+  transition: all 0.3s ease; /* Smooth transition */
+  outline: none;
+  color: black; /* Black text */
+  font-weight: 500; /* Tailwind: font-medium */
+  box-shadow: 0 4px 6px rgba(251, 248, 248, 0.2); /* Slight shadow */
+}
+
+.goog-te-combo:hover {
+  box-shadow: 0 6px 8px rgba(138, 218, 236, 0.5); /* Stronger shadow on hover */
+}
+
+.goog-logo-link {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  color: transparent !important;
+}
+
+.goog-te-gadget > span > a {
+  display: none !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+  color: #36059f !important; /* Red text */
+}
+
+#google_translate_element
+  .goog-te-gadget-simple
+  .goog-te-menu-value
+  span:first-child {
+  display: none;
+}
+
+#google_translate_element .goog-te-gadget-simple .goog-te-menu-value:before {
+  content: "Translate"; /* Change the default text */
+  color: #c01c1c; /* Red text */
+}
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-te-menu-frame {
+  max-height: 400px !important;
+  overflow-y: auto !important;
+  background-color: white; /* White background for dropdown */
+  border: 1px solid #c01c1c; /* Red border */
+  border-radius: 0.5rem; /* Slightly more rounded */
+}
+
+/* Hide the banner frame */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+/* Customize the iframe */
+.skiptranslate > iframe {
+  height: 0 !important;
+  border-style: none;
+  box-shadow: none;
+}
+
+body {
+  position: relative;
+  top: 0 !important;
+}

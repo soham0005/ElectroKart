@@ -1,38 +1,49 @@
-.ItemCard{
+.ItemCard {
     display: flex;
     flex-direction: column;
     align-items: center; 
     background-color: white;
-    width: 31%;
-    margin:  0.7vmax;
+    width: 30%; 
+    margin: 1vmax; 
     transition: all 0.5s;
     cursor: pointer;
-
+    border-radius: 8px; 
+    position: relative; 
 }
 
-.ItemCard:hover{
+.ItemCard:hover {
     transform: translateY(-0.4vmax);
     box-shadow: 0px 6px 15px rgba(53, 53, 53, 0.363);
-
 }
 
-
-.ItemCard > img{
-    width: 70%;
-
+.ItemCard > img {
+    width: 80%; /* Increase width to better fill the card */
+    height: auto; /* Ensure the image maintains its aspect ratio */
 }
-
 
 .ItemCard > p {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(85, 83, 83);
-
+    margin: 1vmax 0; /* Add space between the image and text */
 }
 
-.ItemCard > span{
-    margin: -1vmax 0 1vmax 0;
+.ItemCard > span {
+    margin: -0.5vmax 0 1vmax 0; /* Adjust spacing to make text fit better */
     color: orangered;
-
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
 }
+
+/* Wishlist icon styling */
+.wishlist-icon {
+    position: absolute;
+    top: 10px;  
+    right: 10px;
+    font-size: 22px; 
+    cursor: pointer; 
+    transition: color 0.3s ease;
+}
+
+.wishlist-icon:hover {
+    color: red; 
+}
+

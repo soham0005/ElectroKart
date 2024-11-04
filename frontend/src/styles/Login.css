@@ -1,45 +1,61 @@
-.signin-wrapper {
-  margin-top: 100px;
-  margin-bottom: 180px;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 
-.signin-form-container {
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: transparent;
+}
+
+.form-container {
+  padding: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
-.input-field {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: transparent;
-  color: #333;
+.login-button {
+  background-color: #2980b9;
+  color: #fff;
 }
 
-.input-field:focus {
-  border-color: #42484e;
-  outline: none;
+.login-button:hover {
+  background-color: #3498db;
 }
 
-.register-button {
-  background-color: #000000;
-  color: white;
+.link {
+  text-decoration: none;
+  color: #2980b9;
+  font-weight: bold;
 }
 
-.register-button:hover {
-  background-color: #000000;
+.background-animation {
+  animation: animateBackground 10s linear infinite;
 }
 
-@media (max-width: 600px) {
-  .input-field {
-    font-size: 14px;
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
   }
+}
 
-  .register-button {
-    font-size: 14px;
+@keyframes animateBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
   }
 }

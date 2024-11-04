@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import StarProducts from './StarProducts';
 import AccessoriesMenu from './AccessoriesMenu';
 import Offers from '../components/OfferSection/Offers';
@@ -12,13 +12,34 @@ import Heading from './Heading.jsx';
 import { useLocation } from 'react-router-dom';
 import Accessories from './Accessories.jsx';
 import Contact from './contact.jsx';
+import '../styles/preloaderStyle.css'; 
 
 const Home = () => {
+  useEffect(()=>{
+    let preloader = document.querySelector("div #preloader");
 
+    window.addEventListener("load",function(e){
+
+      preloader.style.display = "none";
+
+    });
+  },[]);
   const location = useLocation();
 
   return (
     <div>
+      {/* <div id="preloader">
+        < div class="wrapper">
+          <div class="box-wrap">
+              <div class="box one"></div>
+              <div class="box two"></div>
+              <div class="box three"></div>
+              <div class="box four"></div>
+              <div class="box five"></div>
+              <div class="box six"></div>
+          </div>
+        </div>
+      </div> */}
     <Slider start={data.banner.start} />
       <Offers offer = {data.offer} />
       <Heading text={"FEATURED"}/>
@@ -56,7 +77,7 @@ const Home = () => {
       <Contact contact={data.contact} />
 
       <Footer footer={data.footer} />
-
+      
     </div>
   )
 }

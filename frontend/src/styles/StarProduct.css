@@ -1,8 +1,10 @@
 .starProduct {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  margin: 1vmax auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .starProduct > div:last-child {
@@ -25,11 +27,11 @@
 
   .starProduct > div:first-child img {
     height: auto;
-    width: 100vw;
+    width: 80vw;
     margin: 5% 0;
   }
   .starProduct > div:nth-child(2) img {
-    width: 100vw;
+    width: 80vw;
     height: auto;
     position: relative;
     right: 25vw;

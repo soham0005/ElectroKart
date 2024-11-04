@@ -113,10 +113,27 @@ fill: rgb(34, 34, 34);
   .PreFooter2 > div:nth-child(4) > a > svg{
     cursor: pointer;
     margin: 1vmax;
-    fill: rgba(138, 138, 138, 0.705);
+    transition: all .38s ease;
+    fill: rgba(0, 0, 0, 0.705);
   }
   .PreFooter2 > div:nth-child(4) > a >svg:hover{
+    transform: scale(1.2);
+    
+    border-radius: 4px;
+    fill: rgb(255, 255, 255);
+  }
+  #youtube:hover{
     fill: rgb(94, 94, 94);
+    background-color:rgb(249, 48, 48) ;
+  }
+  #facebook:hover{
+    background-color:#0a66c2 ;
+  }
+  #instagram:hover{
+    background-color: #e1306c;
+  }
+  #twitter:hover{
+    background-color: #2887e5;
   }
   @media  screen and (max-width:600px) {
     .PreFooter{

@@ -24,10 +24,11 @@
 
 .section__title {
   font-size: 2.5rem;
-  color: #4D4D4D;
+  color: #4d4d4d;
   margin-bottom: 1rem;
   text-align: center;
-  font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    sans-serif;
 }
 
 .contact__title {
@@ -35,7 +36,8 @@
   font-weight: 500;
   color: #5e5e5e;
   margin-bottom: 0.5rem;
-  font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    sans-serif;
 }
 
 .contact__details {
@@ -81,7 +83,7 @@
 
 .contact__form-input:focus,
 .contact__form-area textarea:focus {
-  border-color: #007BFF; /* Primary theme color */
+  border-color: #007bff; /* Primary theme color */
 }
 
 .contact__form-area textarea {
@@ -92,7 +94,7 @@
 /* Button */
 .btn {
   display: inline-block;
-  background-color: #007BFF; /* Use your button's main color */
+  background-color: #007bff; /* Use your button's main color */
   color: #fff;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -120,20 +122,21 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .contact__container {
-      grid-template-columns: 1fr; /* Stack on smaller screens */
+    grid-template-columns: 1fr; /* Stack on smaller screens */
+    gap: 1.6rem;
   }
 
   .contact__form-group {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .contact__title {
-      font-size: 1.6rem;
+    font-size: 1.6rem;
   }
 
   .section__title {
-      font-size: 2rem;
+    font-size: 2rem;
   }
 }
