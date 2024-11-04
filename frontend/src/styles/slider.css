@@ -1,44 +1,84 @@
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 20px; /* Rounded edges for rectangle */
+    border: none;
+    color: white; /* White text and arrow color */
+    font-size: 18px; /* Slightly smaller text size to fit nicely */
+    width: 100px; /* Increased width for text */
+    height: 40px; /* Increased height */
+    padding: 0;
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hide default carousel controls (Bootstrap arrows) */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: none;
+}
+
+/* Add spacing from the left and right edges */
+.carousel-control-prev {
+    left: 60px; /* Increased spacing from the left */
+}
+
+.carousel-control-next {
+    right: 60px; /* Increased spacing from the right */
+}
+
+/* Hover effect for buttons */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: rgba(0, 0, 0, 0.7); /* Darker background on hover */
+}
+
+/* Custom arrow icons */
+.carousel-control-prev::before,
+.carousel-control-next::before {
+    font-family: 'FontAwesome';
+    content: "\f104"; /* Unicode for left arrow (adjust based on your custom arrow) */
+    font-size: 24px; /* Custom font size for the arrow */
+}
+
+
+.carousel-control-next::before {
+    content: "\f105"; /* Unicode for right arrow */
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6); /* Black semi-transparent background */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+/* Styling for carousel images - from master branch */
 .carousel .carousel-inner .carousel-item img {
-  width: 100%; /* Ensure the image fills the entire width of the carousel */
-  height: auto; /* Maintain the aspect ratio */
-  object-fit: cover; /* Ensure images fit nicely without stretching */
-  border-radius: 8px; /* Optional: Adds rounded corners to the images */
+    width: 100%; /* Ensure the image fills the entire width of the carousel */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: cover; /* Ensure images fit nicely without stretching */
+    border-radius: 8px; /* Optional: Adds rounded corners to the images */
 }
 
 .carousel .carousel-inner .carousel-item {
-  transition: transform 0.5s ease-in-out; /* Smoothen the transition effect */
+    transition: transform 0.5s ease-in-out; /* Smoothen the transition effect */
 }
 
 .carousel .carousel-indicators button {
-  width: 50px; /* Reduce the width for better visibility */
-  height: 3px;
-  background-color: white;
-  opacity: 0.6;
-  margin: 10px;
-  border: none;
-}
-
-.carousel .carousel-indicators .active {
-  opacity: 1;
-}
-
-.carousel .carousel-inner .carousel-item {
-  transition: transform 0.2s ease-in-out; /* Controls the transition speed and smoothness */
-}
-
-@media screen and (max-width: 476px) {
-  .carousel .carousel-inner .carousel-item img {
-    width: 100%; /* Ensure the image fills the entire width on small screens */
-    height: 260px; /* Set a fixed height for better display on mobile */
-    object-fit: cover; /* Ensure images maintain aspect ratio without distortion */
-    border-radius: 4px; /* Reduce the border radius for smaller screens */
-  }
-
-  .carousel .carousel-control-prev .visually-hidden {
-    display: none;
-  }
-
-  .carousel .carousel-control-next .visually-hidden {
-    display: none;
-  }
+    width: 50px; /* Reduced width for better visibility */
+    height: 3px;
+    background-color: white;
+    opacity: 1;
+    margin: 10px;
 }
