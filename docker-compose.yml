@@ -1,3 +1,4 @@
+version: "3.8"
 
 services:
   backend:
@@ -23,6 +24,10 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend:/app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
     networks:
       - electro-network
 
@@ -32,6 +37,7 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    restart: always
     networks:
       - electro-network
 
