@@ -86,6 +86,7 @@
     background-color: white;
     opacity: 1;
     margin: 10px;
+    border-radius: 2px;
 }
 
 .carousel .carousel-inner .carousel-item {
