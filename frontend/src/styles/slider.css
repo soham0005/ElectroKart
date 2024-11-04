@@ -80,7 +80,6 @@
     width: 50px; /* Reduced width for better visibility */
     height: 3px;
     background-color: white !important; /* Set the background color to white */
-    opacity: 0.6; /* Semi-transparent for inactive indicators */
     margin: 10px;
     border-radius: 2px;
     border: none;
