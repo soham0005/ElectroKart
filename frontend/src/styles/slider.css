@@ -69,6 +69,11 @@
     height: auto; /* Maintain the aspect ratio */
     object-fit: cover; /* Ensure images fit nicely without stretching */
     border-radius: 8px; /* Optional: Adds rounded corners to the images */
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; 
+    border: none;
+}
+.carousel .carousel-indicators .active {
+    opacity: 1;
 }
 
 .carousel .carousel-inner .carousel-item {
@@ -81,4 +86,8 @@
     background-color: white;
     opacity: 1;
     margin: 10px;
+}
+
+.carousel .carousel-inner .carousel-item {
+    transition: transform 0.2s ease-in-out; /* Controls the transition speed and smoothness */
 }
