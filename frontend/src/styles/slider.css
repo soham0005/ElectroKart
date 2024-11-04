@@ -73,20 +73,18 @@
     border: none;
 }
 .carousel .carousel-indicators .active {
-    opacity: 1;
-}
-
-.carousel .carousel-inner .carousel-item {
-    transition: transform 0.5s ease-in-out; /* Smoothen the transition effect */
+    background-color: white;
 }
 
 .carousel .carousel-indicators button {
     width: 50px; /* Reduced width for better visibility */
     height: 3px;
-    background-color: white;
-    opacity: 1;
+    background-color: white !important; /* Set the background color to white */
+    opacity: 0.6; /* Semi-transparent for inactive indicators */
     margin: 10px;
     border-radius: 2px;
+    border: none;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; 
 }
 
 .carousel .carousel-inner .carousel-item {
