@@ -31,27 +31,43 @@ function Slider({ start }) {
   };
 
   return (
-    <Carousel
-      fade
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      interval={3000}
-      pause="hover"
-      keyboard={true}
-    >
-      {start.map((item, index) => (
-        <Carousel.Item key={index}>
-          <img
-            className="d-block w-100"
-            src={item}
-            alt={`Slide ${index}`}
-            loading="lazy"
-          />
-        </Carousel.Item>
-      ))}
-    </Carousel>
+    <div className="slider-container">
+      <Carousel
+        fade
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        interval={3000}
+        pause="hover"
+        keyboard={true}
+      >
+        {start.map((item, index) => (
+          <Carousel.Item key={index}>
+            <img
+              className="d-block w-100"
+              src={item}
+              alt={`Slide ${index}`}
+              loading="lazy"
+            />
+            {/* Show caption only for the second item (index 1) */}
+            {index === 1 && (
+              <Carousel.Caption>
+                <h3>In the Press</h3>
+                <p>Some description of the press article or feature goes here.</p>
+              </Carousel.Caption>
+            )}
+          </Carousel.Item>
+        ))}
+      </Carousel>
+
+      {/* Explicit Previous and Next buttons */}
+      <button className="carousel-control-prev" aria-label="Previous">
+        <span className="carousel-control-prev-icon" aria-hidden="true">Previous</span>
+      </button>
+      <button className="carousel-control-next" aria-label="Next">
+        <span className="carousel-control-next-icon" aria-hidden="true">Next</span>
+      </button>
+    </div>
   );
 }
 
 export default Slider;
-
