@@ -8,27 +8,27 @@ import promotionalVideo from '../assets/promotionalVideo.mp4'; // Add your video
 const ExclusiveOffers = () => {
     const offers = [
         {
-            image: 'path/to/smart-bundle-img.jpg',
+            image: '..\frontend\src\assets\smart-bundle-img.jpg',
             title: 'Smart Bundles',
             description: 'Unlock extra savings with product bundles – Save up to 45%!',
         },
         {
-            image: 'path/to/bestselling-smartphones-image.jpg',
+            image: '..\frontend\src\assets\bestselling-smartphones-image.jpg',
             title: 'Bestselling Smartphones',
             description: 'Get the most popular smartphones at exclusive Diwali/Festival discounts!',
         },
         {
-            image: 'path/to/smart-tv-image.jpg',
+            image: '..\frontend\src\assets\smart-tv-image.jpg',
             title: 'Smart TV',
             description: 'Enjoy crystal-clear displays with deals on the latest Smart TVs.',
         },
         {
-            image: 'path/to/power-banks-image.jpg',
+            image: '..\frontend\src\assets\power-banks-image.jpg',
             title: 'Power Banks',
             description: 'Power on the go! Shop high-capacity power banks with fast charging.',
         },
         {
-            image: 'path/to/audio-products-image.jpg',
+            image: '..\frontend\src\assets\audio-products-image.jpg',
             title: 'Audio Products',
             description: 'Experience immersive sound with wireless earbuds, headphones, and speakers.',
         },
