@@ -1,0 +1,39 @@
+/* frontend/src/styles/exclusiveOffers.css */
+.exclusive-offers {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.offers-carousel img {
+    height: 400px; /* Adjust as necessary */
+    object-fit: cover;
+}
+
+.video-container {
+    margin-top: 2rem;
+}
+
+.video-container video {
+    width: 100%;
+    max-width: 800px; /* Adjust max-width as necessary */
+    border-radius: 8px;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Add this to exclusiveOffers.css */
+.offers-carousel .carousel-item:hover {
+    transform: scale(1.05);
+}
