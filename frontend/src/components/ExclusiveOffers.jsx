@@ -8,7 +8,7 @@ import promotionalVideo from '../assets/promotionalVideo.mp4'; // Add your video
 const ExclusiveOffers = () => {
     const offers = [
         {
-            image: 'path/to/smart-bundle-image.jpg',
+            image: 'path/to/smart-bundle-img.jpg',
             title: 'Smart Bundles',
             description: 'Unlock extra savings with product bundles – Save up to 45%!',
         },
