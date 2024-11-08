@@ -13,7 +13,7 @@ import { useLocation } from 'react-router-dom';
 import Accessories from './Accessories.jsx';
 import Contact from './contact.jsx';
 import '../styles/preloaderStyle.css'; 
-
+import ExclusiveOffers from './ExclusiveOffers.jsx';
 const Home = () => {
   useEffect(()=>{
     let preloader = document.querySelector("div #preloader");
@@ -77,9 +77,9 @@ const Home = () => {
       <Contact contact={data.contact} />
 
       <Footer footer={data.footer} />
-      
+      <ExclusiveOffers />
     </div>
   )
 }
 
-export default Home
+export default Home;
