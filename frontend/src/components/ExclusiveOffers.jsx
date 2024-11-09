@@ -2,33 +2,38 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/exclusiveOffers.css'; // Create this CSS file for styling
-import promotionalVideo from '../assets/promotionalVideo.mp4'; // Add your video file here
+import '../styles/ExclusiveOffers.css';
+import smartBundleImg from '../assets/smart-bundle-img.jpg';
+import bestsellingSmartphonesImg from '../assets/bestselling-smartphones-image.jpg';
+import smartTvImg from '../assets/smart-tv-image.jpg';
+import powerBanksImg from '../assets/power-banks-image.jpg';
+import audioProductsImg from '../assets/audio-products-image.jpg';
+// import promotionalVideo from '../assets/promotionalVideo.mp4'; // Add your video file here
 
 const ExclusiveOffers = () => {
     const offers = [
         {
-            image: '../frontend/src/assets/smart-bundle-img.jpg',
+            image: smartBundleImg,
             title: 'Smart Bundles',
             description: 'Unlock extra savings with product bundles – Save up to 45%!',
         },
         {
-            image: '../frontend/src/assets/bestselling-smartphones-image.jpg',
+            image: bestsellingSmartphonesImg,
             title: 'Bestselling Smartphones',
             description: 'Get the most popular smartphones at exclusive Diwali/Festival discounts!',
         },
         {
-            image: '../frontend/src/assets/smart-tv-image.jpg',
+            image: smartTvImg,
             title: 'Smart TV',
             description: 'Enjoy crystal-clear displays with deals on the latest Smart TVs.',
         },
         {
-            image: '../frontend/src/assets/power-banks-image.jpg',
+            image: powerBanksImg,
             title: 'Power Banks',
             description: 'Power on the go! Shop high-capacity power banks with fast charging.',
         },
         {
-            image: '../frontend/src/assets/audio-products-image.jpg',
+            image: audioProductsImg,
             title: 'Audio Products',
             description: 'Experience immersive sound with wireless earbuds, headphones, and speakers.',
         },
@@ -53,13 +58,13 @@ const ExclusiveOffers = () => {
                     </Carousel.Item>
                 ))}
             </Carousel>
-            <div className="video-container">
+            {/* <div className="video-container">
                 <h3>Watch Our Promotional Video</h3>
                 <video controls>
                     <source src={promotionalVideo} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-            </div>
+            </div> */}
         </div>
     );
 };
