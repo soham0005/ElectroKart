@@ -12,8 +12,12 @@
 }
 
 .offers-carousel img {
-    height: 400px; /* Adjust as necessary */
-    object-fit: cover;
+    width: 100%; /* Ensure the image fills the entire width of the carousel */
+    height: auto; /* Maintain the aspect ratio */
+    max-height: 400px; /* Adjust as necessary */
+    object-fit: cover; /* Ensure images fit nicely without stretching */
+    image-rendering: auto; /* Default rendering */
+    image-rendering: -webkit-optimize-contrast; /* For WebKit browsers */
 }
 
 .video-container {

@@ -41,10 +41,10 @@ const Home = () => {
         </div>
       </div> */}
     <Slider start={data.banner.start} />
-      <Offers offer = {data.offer} />
+      <Offers offer = {data.offer}  />
+      <ExclusiveOffers />
       <Heading text={"FEATURED"}/>
       <StarProducts starProduct={data.starProduct} />
-     
       <Heading text={"ACCESSORIES"}/>
       <AccessoriesMenu/>
 
@@ -77,7 +77,7 @@ const Home = () => {
       <Contact contact={data.contact} />
 
       <Footer footer={data.footer} />
-      <ExclusiveOffers />
+
     </div>
   )
 }
