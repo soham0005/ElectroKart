@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&display=swap');
+
+
 .faq-page {
   position: relative;
   height: 100vh;
@@ -53,6 +57,9 @@ h1 {
   text-align: center;
   margin-bottom: 30px;
   color: #00796b;
+  font-family: "Anton SC", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .faq-item {
@@ -105,6 +112,7 @@ h1 {
   margin-bottom: 20px;
   width: 100%;
   max-width: 400px;
+  display: inline-block;
   display: flex;
 }
 
@@ -130,6 +138,7 @@ h1 {
   transform: translateY(-50%);
   font-size: 16px;
   color: #ccc;
+  /* color: black; */
   transition: color 0.3s ease;
 }
 

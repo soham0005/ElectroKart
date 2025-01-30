@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes.js')
 const mongoose = require('mongoose');
 const orderRoutes = require('./routes/orderRoutes.js')
+// const pg=require('pg');
 const productRoutes = require('./routes/productRoutes.js')
 const bodyParser = require('body-parser');
 const contactRoutes = require("./routes/contactUs.js")
@@ -34,7 +35,9 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB
 const CONNECTION_URL =  process.env.MONGO_URL
 
+
 mongoose.connect(CONNECTION_URL , {useNewUrlParser: true, useUnifiedTopology : true})
     .then(() => app.listen(PORT,() => {console.log( `server running on port ${PORT}`)}))
     .catch((err) => console.log(err.message) )
+
 ;
