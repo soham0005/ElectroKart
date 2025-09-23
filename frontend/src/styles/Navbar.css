@@ -95,6 +95,69 @@
     fill: rgb(0, 125, 235);
 }
 
+.nav-center {
+    display: flex;
+    gap: 2rem;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Dark mode styles */
+.nav.dark-mode {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .navlinks {
+    color: white;
+}
+
+.dark-mode .searchbox input {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode .searchbox input::placeholder {
+    color: #aaa;
+}
+
+.dark-mode #searchBox {
+    fill: white;
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    margin-left: 1vmax;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle.dark:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Global dark mode styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: white;
+}
+
 /* Responsive Navbar */
 @media (max-width: 768px) {
     .nav {
