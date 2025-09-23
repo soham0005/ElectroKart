@@ -3,13 +3,14 @@ import styled from "styled-components";
 import { CiShoppingCart, CiUser } from "react-icons/ci";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose, AiOutlineHeart } from "react-icons/ai";
+import { BsMoon, BsSun } from "react-icons/bs";
 import "@fontsource/montserrat";
 import { Link, useLocation } from "react-router-dom";
-
 
 const PreNavbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isLoggedin, setIsLoggedin] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
   const loc = useLocation();
 
   useEffect(() => {
@@ -18,6 +19,10 @@ const PreNavbar = () => {
       setIsLoggedin(true);
     }
   }, [loc]);
+
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode", darkMode);
+  }, [darkMode]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -28,53 +33,49 @@ const PreNavbar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
+  const handleThemeToggle = () => {
+    setDarkMode((prev) => !prev);
+  };
+
   return (
     <>
-      <Nav>
+      <Nav darkMode={darkMode}>
         <NavLeft>
           <Link to="/">
-            {" "}
             <Logo src="/logo.png" alt="Logo" />
           </Link>
-          <StyledNavItem to="/">Store</StyledNavItem>
-          <StyledNavItem to="https://www.mi.com/in/phone/">
-            Phones
-          </StyledNavItem>
-          <StyledNavItem to="https://www.mi.com/in/tablet/">
-            Tablets
-          </StyledNavItem>
-          <StyledNavItem to="https://www.mi.com/in/tv-smart-home/">
-            TV & Smart Home
-          </StyledNavItem>
-          <StyledNavItem to="https://www.mi.com/in/watch-audio/">
-            Smart Watch & Audio
-          </StyledNavItem>
+          <StyledNavItem to="/" darkMode={darkMode}>Store</StyledNavItem>
+          <StyledNavItem to="https://www.mi.com/in/phone/" darkMode={darkMode}>Phones</StyledNavItem>
+          <StyledNavItem to="https://www.mi.com/in/tablet/" darkMode={darkMode}>Tablets</StyledNavItem>
+          <StyledNavItem to="https://www.mi.com/in/tv-smart-home/" darkMode={darkMode}>TV & Smart Home</StyledNavItem>
+          <StyledNavItem to="https://www.mi.com/in/watch-audio/" darkMode={darkMode}>Smart Watch & Audio</StyledNavItem>
         </NavLeft>
         <NavRight>
           {isLoggedin ? (
-            <AnimatedButton onClick={handleLogout}>Logout</AnimatedButton>
+            <AnimatedButton onClick={handleLogout} darkMode={darkMode}>Logout</AnimatedButton>
           ) : (
-            <AnimatedButton to="/register">Register</AnimatedButton>
+            <AnimatedButton to="/register" darkMode={darkMode}>Register</AnimatedButton>
           )}
-
-          <NavItem href="/FAQs">FAQs</NavItem>
-
-          <NavIcon>
+          <NavItem href="/FAQs" darkMode={darkMode}>FAQs</NavItem>
+          <NavIcon darkMode={darkMode}>
             <CiShoppingCart />
           </NavIcon>
-          <NavIcon>
+          <NavIcon darkMode={darkMode}>
             <Link to="/wishlist">
               <AiOutlineHeart />
             </Link>
           </NavIcon>
           {isLoggedin ? (
-            <NavIcon>
+            <NavIcon darkMode={darkMode}>
               <CiUser />
             </NavIcon>
           ) : (
             ""
           )}
-          <MobileMenuIcon onClick={toggleSidebar}>
+          <ThemeToggleButton onClick={handleThemeToggle} darkMode={darkMode}>
+            {darkMode ? <BsSun /> : <BsMoon />}
+          </ThemeToggleButton>
+          <MobileMenuIcon onClick={toggleSidebar} darkMode={darkMode}>
             <FiMenu />
           </MobileMenuIcon>
         </NavRight>
@@ -82,30 +83,22 @@ const PreNavbar = () => {
 
       {isSidebarOpen && <Overlay onClick={toggleSidebar} />}
 
-      <Sidebar isOpen={isSidebarOpen}>
-        <SidebarHeader>
-          <CloseIcon onClick={toggleSidebar}>
+      <Sidebar isOpen={isSidebarOpen} darkMode={darkMode}>
+        <SidebarHeader darkMode={darkMode}>
+          <CloseIcon onClick={toggleSidebar} darkMode={darkMode}>
             <AiOutlineClose />
           </CloseIcon>
         </SidebarHeader>
         <SidebarContent>
           <CenteredLogo src="/logo.png" alt="Logo" />
-          <StyledSidebarLink to="/">Store</StyledSidebarLink>
-          <StyledSidebarLink to="https://www.mi.com/in/phone/">
-            Phones
-          </StyledSidebarLink>
-          <StyledSidebarLink to="https://www.mi.com/in/tablet/">
-            Tablets
-          </StyledSidebarLink>
-          <StyledSidebarLink to="https://www.mi.com/in/tv-smart-home/">
-            TV & Smart Home
-          </StyledSidebarLink>
-          <StyledSidebarLink to="https://www.mi.com/in/watch-audio/">
-            Smart Watch & Audio
-          </StyledSidebarLink>
+          <StyledSidebarLink to="/" darkMode={darkMode}>Store</StyledSidebarLink>
+          <StyledSidebarLink to="https://www.mi.com/in/phone/" darkMode={darkMode}>Phones</StyledSidebarLink>
+          <StyledSidebarLink to="https://www.mi.com/in/tablet/" darkMode={darkMode}>Tablets</StyledSidebarLink>
+          <StyledSidebarLink to="https://www.mi.com/in/tv-smart-home/" darkMode={darkMode}>TV & Smart Home</StyledSidebarLink>
+          <StyledSidebarLink to="https://www.mi.com/in/watch-audio/" darkMode={darkMode}>Smart Watch & Audio</StyledSidebarLink>
           <SidebarSpacing />
-          <StyledSidebarLink to="/register">Register</StyledSidebarLink>
-          <StyledSidebarLink to="/FAQs">FAQs</StyledSidebarLink>
+          <StyledSidebarLink to="/register" darkMode={darkMode}>Register</StyledSidebarLink>
+          <StyledSidebarLink to="/FAQs" darkMode={darkMode}>FAQs</StyledSidebarLink>
         </SidebarContent>
       </Sidebar>
     </>
@@ -120,12 +113,13 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background-color: #f1f1f1;
+  background-color: ${({ darkMode }) => (darkMode ? "#222" : "#f1f1f1")};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
   font-family: "Montserrat", sans-serif;
+  color: ${({ darkMode }) => (darkMode ? "#fff" : "#222")};
 `;
 
 const NavLeft = styled.div`
@@ -156,7 +150,7 @@ const NavRight = styled.div`
 
 const NavItem = styled.a`
   text-decoration: none;
-  color: black;
+  color: ${({ darkMode }) => (darkMode ? "#fff" : "black")};
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -164,18 +158,12 @@ const NavItem = styled.a`
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: black;
+    color: ${({ darkMode }) => (darkMode ? "#ffd700" : "black")};
     text-decoration: none;
   }
 
   &:hover::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: black;
+    background-color: ${({ darkMode }) => (darkMode ? "#ffd700" : "black")};
   }
 
   &::after {
@@ -185,7 +173,7 @@ const NavItem = styled.a`
     left: 0;
     width: 0%;
     height: 1px;
-    background-color: black;
+    background-color: ${({ darkMode }) => (darkMode ? "#ffd700" : "black")};
     transition: width 0.3s ease-in-out;
   }
 
@@ -197,7 +185,7 @@ const NavItem = styled.a`
 const NavIcon = styled.div`
   font-size: 22px;
   cursor: pointer;
-  color: black;
+  color: ${({ darkMode }) => (darkMode ? "#fff" : "black")};
   transition: color 0.3s ease-in-out;
 
   &:hover {
@@ -211,6 +199,7 @@ const NavIcon = styled.div`
 
 const MobileMenuIcon = styled.div`
   display: none;
+  color: ${({ darkMode }) => (darkMode ? "#fff" : "black")};
 
   @media (max-width: 1024px) {
     display: block;
@@ -219,22 +208,22 @@ const MobileMenuIcon = styled.div`
   }
 `;
 
-// New Styled Component for Animated Register Button
 const AnimatedButton = styled(Link)`
   padding: 10px 20px;
-  background-color: black;
-  color: white;
+  background-color: ${({ darkMode }) => (darkMode ? "#fff" : "black")};
+  color: ${({ darkMode }) => (darkMode ? "#222" : "white")};
   text-decoration: none;
   border-radius: 5px;
   font-weight: 500;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 
   &:hover {
     transform: translateY(-2px);
     text-decoration: none;
-    color: white;
+    background-color: ${({ darkMode }) => (darkMode ? "#ffd700" : "#222")};
+    color: ${({ darkMode }) => (darkMode ? "#222" : "white")};
   }
 
   &:active {
@@ -258,25 +247,27 @@ const Sidebar = styled.div`
   right: 0;
   width: 50%;
   height: 100%;
-  background-color: #f1f1f1;
+  background-color: ${({ darkMode }) => (darkMode ? "#222" : "#f1f1f1")};
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, background-color 0.3s;
   transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(100%)")};
   z-index: 200;
   font-family: "Montserrat", sans-serif;
+  color: ${({ darkMode }) => (darkMode ? "#fff" : "#222")};
 `;
 
 const SidebarHeader = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 10px 20px;
-  background-color: #f1f1f1;
-  color: black;
+  background-color: ${({ darkMode }) => (darkMode ? "#222" : "#f1f1f1")};
+  color: ${({ darkMode }) => (darkMode ? "#fff" : "black")};
 `;
 
 const CloseIcon = styled.div`
   font-size: 24px;
   cursor: pointer;
+  color: ${({ darkMode }) => (darkMode ? "#fff" : "black")};
 `;
 
 const SidebarContent = styled.div`
@@ -305,7 +296,7 @@ const Logo = styled.img`
 
 const StyledNavItem = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: ${({ darkMode }) => (darkMode ? "#fff" : "black")};
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -313,18 +304,12 @@ const StyledNavItem = styled(Link)`
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: black;
+    color: ${({ darkMode }) => (darkMode ? "#ffd700" : "black")};
     text-decoration: none;
   }
 
   &:hover::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: black;
+    background-color: ${({ darkMode }) => (darkMode ? "#ffd700" : "black")};
   }
 
   &::after {
@@ -334,7 +319,7 @@ const StyledNavItem = styled(Link)`
     left: 0;
     width: 0%;
     height: 1px;
-    background-color: black;
+    background-color: ${({ darkMode }) => (darkMode ? "#ffd700" : "black")};
     transition: width 0.3s ease-in-out;
   }
 
@@ -344,7 +329,7 @@ const StyledNavItem = styled(Link)`
 `;
 const StyledSidebarLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: ${({ darkMode }) => (darkMode ? "#fff" : "black")};
   font-size: 18px;
   padding: 10px 0;
   cursor: pointer;
@@ -352,9 +337,9 @@ const StyledSidebarLink = styled(Link)`
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: black;
+    color: ${({ darkMode }) => (darkMode ? "#ffd700" : "black")};
     text-decoration: none;
-    transform: translateX(5px); /* Add animation */
+    transform: translateX(5px);
   }
 
   &::after {
@@ -364,11 +349,29 @@ const StyledSidebarLink = styled(Link)`
     left: 0;
     width: 0%;
     height: 1px;
-    background-color: black;
+    background-color: ${({ darkMode }) => (darkMode ? "#ffd700" : "black")};
     transition: width 0.3s ease-in-out;
   }
 
   &:hover::after {
     width: 100%;
+  }
+`;
+
+const ThemeToggleButton = styled.button`
+  background: ${({ darkMode }) => (darkMode ? "#222" : "#eee")};
+  color: ${({ darkMode }) => (darkMode ? "#ffd700" : "#222")};
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 8px;
+  transition: background 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background: ${({ darkMode }) => (darkMode ? "#333" : "#ddd")};
   }
 `;
