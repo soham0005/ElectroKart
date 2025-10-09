@@ -10,6 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 const PreNavbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isLoggedin, setIsLoggedin] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const loc = useLocation();
 
   useEffect(() => {
@@ -19,6 +20,14 @@ const PreNavbar = () => {
     }
   }, [loc]);
 
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const shouldUseDark = savedTheme ? savedTheme === "dark" : prefersDark;
+    setIsDarkMode(shouldUseDark);
+    document.documentElement.classList.toggle("dark", shouldUseDark);
+  }, []);
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedin(false);
@@ -26,6 +35,13 @@ const PreNavbar = () => {
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
+  };
+
+  const toggleTheme = () => {
+    const next = !isDarkMode;
+    setIsDarkMode(next);
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
   };
 
   return (
@@ -74,6 +90,9 @@ const PreNavbar = () => {
           ) : (
             ""
           )}
+          <ThemeToggle onClick={toggleTheme} aria-label="Toggle dark mode">
+            {isDarkMode ? "Light" : "Dark"}
+          </ThemeToggle>
           <MobileMenuIcon onClick={toggleSidebar}>
             <FiMenu />
           </MobileMenuIcon>
@@ -120,7 +139,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background-color: #f1f1f1;
+  background-color: var(--color-surface);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -156,7 +175,7 @@ const NavRight = styled.div`
 
 const NavItem = styled.a`
   text-decoration: none;
-  color: black;
+  color: var(--color-text);
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -164,7 +183,7 @@ const NavItem = styled.a`
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: black;
+    color: var(--color-text);
     text-decoration: none;
   }
 
@@ -175,7 +194,7 @@ const NavItem = styled.a`
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: black;
+    background-color: var(--color-text);
   }
 
   &::after {
@@ -185,7 +204,7 @@ const NavItem = styled.a`
     left: 0;
     width: 0%;
     height: 1px;
-    background-color: black;
+    background-color: var(--color-text);
     transition: width 0.3s ease-in-out;
   }
 
@@ -197,11 +216,11 @@ const NavItem = styled.a`
 const NavIcon = styled.div`
   font-size: 22px;
   cursor: pointer;
-  color: black;
+  color: var(--color-text);
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #007bff;
+    color: var(--color-link);
   }
 
   @media (max-width: 1024px) {
@@ -222,8 +241,8 @@ const MobileMenuIcon = styled.div`
 // New Styled Component for Animated Register Button
 const AnimatedButton = styled(Link)`
   padding: 10px 20px;
-  background-color: black;
-  color: white;
+  background-color: var(--color-accent);
+  color: var(--color-text);
   text-decoration: none;
   border-radius: 5px;
   font-weight: 500;
@@ -234,11 +253,28 @@ const AnimatedButton = styled(Link)`
   &:hover {
     transform: translateY(-2px);
     text-decoration: none;
-    color: white;
+    color: var(--color-text);
   }
 
   &:active {
     transform: translateY(1px);
+  }
+`;
+
+const ThemeToggle = styled.button`
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: white;
+  color: black;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+
+  .dark & {
+    background: #1f2937;
+    color: #f3f4f6;
+    border-color: #374151;
   }
 `;
 
@@ -258,7 +294,7 @@ const Sidebar = styled.div`
   right: 0;
   width: 50%;
   height: 100%;
-  background-color: #f1f1f1;
+  background-color: var(--color-surface);
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease-in-out;
   transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(100%)")};
@@ -270,8 +306,8 @@ const SidebarHeader = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 10px 20px;
-  background-color: #f1f1f1;
-  color: black;
+  background-color: var(--color-surface);
+  color: var(--color-text);
 `;
 
 const CloseIcon = styled.div`
@@ -305,7 +341,7 @@ const Logo = styled.img`
 
 const StyledNavItem = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: var(--color-text);
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -313,7 +349,7 @@ const StyledNavItem = styled(Link)`
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: black;
+    color: var(--color-text);
     text-decoration: none;
   }
 
@@ -324,7 +360,7 @@ const StyledNavItem = styled(Link)`
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: black;
+    background-color: var(--color-text);
   }
 
   &::after {
@@ -334,7 +370,7 @@ const StyledNavItem = styled(Link)`
     left: 0;
     width: 0%;
     height: 1px;
-    background-color: black;
+    background-color: var(--color-text);
     transition: width 0.3s ease-in-out;
   }
 
@@ -344,7 +380,7 @@ const StyledNavItem = styled(Link)`
 `;
 const StyledSidebarLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: var(--color-text);
   font-size: 18px;
   padding: 10px 0;
   cursor: pointer;
@@ -352,7 +388,7 @@ const StyledSidebarLink = styled(Link)`
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: black;
+    color: var(--color-text);
     text-decoration: none;
     transform: translateX(5px); /* Add animation */
   }
@@ -364,7 +400,7 @@ const StyledSidebarLink = styled(Link)`
     left: 0;
     width: 0%;
     height: 1px;
-    background-color: black;
+    background-color: var(--color-text);
     transition: width 0.3s ease-in-out;
   }
 
