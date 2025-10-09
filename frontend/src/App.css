@@ -1,6 +1,34 @@
+:root{
+    --color-bg: #edf0f3;          /* page background */
+    --color-text: #0b1220;        /* primary text */
+    --color-surface: #f1f1f1;     /* cards/navs */
+    --color-border: #d1d5db;      /* borders */
+    --color-link: #1f2937;        /* links */
+    --color-accent: #111827;      /* buttons */
+}
+
+.dark{
+    --color-bg: #0f172a;
+    --color-text: #e5e7eb;
+    --color-surface: #111827;
+    --color-border: #374151;
+    --color-link: #93c5fd;
+    --color-accent: #2563eb;
+}
+
 body{
     margin: 0;
-    background-color: rgb(237, 235, 235);
+    background-color: var(--color-bg);
+    color: var(--color-text);
     overflow-x: hidden;
 }
+
+/* Global dark mode baseline */
+.dark a{ color: var(--color-link); }
+.dark input, .dark select, .dark textarea{
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border-color: var(--color-border);
+}
+.dark button{ color: var(--color-text); }
 
